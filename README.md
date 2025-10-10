@@ -15,7 +15,7 @@ MiroScape is an interactive platform for integrated transcriptomic analyses of g
 
 Our manuscript is currently under review:
 
-Du, Z.; Li, M.; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Choi, J.; Kim, L.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X.  
+Du, Z.*; Li, M.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Choi, J.; Kim, L.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X.  
 _Cross-Species Transcriptomic Integration Reveals a Conserved, Miro1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma._  
 (Under review. Link will be updated when available.)
 
