@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import {Outlet, useNavigate} from "react-router-dom";
 const { Header, Content } = Layout;
-const items = [{key: 'introduction', label: 'Home'},
+const items = [{key: 'home', label: 'Home'},
     {key: 'microScripts', label: 'MicroScripts'},
     {key: 'mitoSurf', label: 'MitoSurf'},
     {key: 'microProteome', label: 'MiroProteome'}];

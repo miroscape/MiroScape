@@ -1,6 +1,8 @@
 import React from 'react';
+import IframeResizer from 'iframe-resizer-react';
+
 // import {HomeOutlined} from '@ant-design/icons';
-import {Breadcrumb, Layout, Menu, theme} from "antd";
+import {Breadcrumb, Col, Layout, Menu, Row, theme} from "antd";
 import {useEffect, useState} from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {RiBrainLine, RiDatabaseLine, RiEarthLine, RiHome5Line, RiMickeyLine, RiTeamLine} from "@remixicon/react";
@@ -22,8 +24,10 @@ const MouseSnRNASeq=()=>{
 
         <div>
             {shouldRenderOtherComponents && (
-                <Content style={{ padding: '0 24px', minHeight: 280 }}>MouseSnRNASeq</Content>
-            )}
+                <div style={{minHeight:670}}>
+                    <iframe src="https://zehuidu.shinyapps.io/shinyapp/" width="400%" height="670" frameBorder="0"></iframe>
+                </div>
+                )}
         </div>
     );
 }

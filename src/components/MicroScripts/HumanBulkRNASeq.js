@@ -1,6 +1,6 @@
 import React from 'react';
 // import {HomeOutlined} from '@ant-design/icons';
-import {Breadcrumb, Layout, Menu, theme} from "antd";
+import {Breadcrumb, Col, Image, Input, Layout, Menu, Row, theme, Typography} from "antd";
 import {useEffect, useState} from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {RiBrainLine, RiDatabaseLine, RiEarthLine, RiHome5Line, RiMickeyLine, RiTeamLine} from "@remixicon/react";
@@ -22,7 +22,25 @@ const HumanBulkRNASeq=()=>{
 
         <div>
             {shouldRenderOtherComponents && (
-                <Content style={{ padding: '0 24px', minHeight: 280 }}>HumanBulkRNASeq</Content>
+                <>
+                    <Row>
+                        <Col span={24}>
+                            <Typography.Title style={{ padding: '12px 36px'}}  level={3}>Gene name</Typography.Title>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={24}>
+                            <Input.Search style={{ padding: '0 36px'}} placeholder="Outlined" variant="filled" />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col >
+                            <Image style={{ padding: '80px 360px'}}
+                                   src={require('../../assets/humanvolcano.png')}
+                            />
+                        </Col>
+                    </Row>
+                </>
             )}
         </div>
     );

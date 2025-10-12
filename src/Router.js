@@ -9,6 +9,7 @@ import DataSource from "./components/MicroScripts/DataSource";
 import HumanBulkRNASeq from "./components/MicroScripts/HumanBulkRNASeq";
 import MouseSnRNASeq from "./components/MicroScripts/MouseSnRNASeq";
 import PopulationAnalysis from "./components/MicroScripts/PopulationAnalysis";
+import Introduction from "./components/Introduction";
 
 const BasicRoute = () => {
 
@@ -19,7 +20,11 @@ const BasicRoute = () => {
             children:[
                 {
                     index: true,
-                    element: <Navigate to="/microScripts/home" replace />,
+                    element: <Navigate to="/home" replace />,
+                },
+                {
+                    path:'/home',
+                    element:<Introduction/>,
                 },
                 {
                     path:'/microScripts',
