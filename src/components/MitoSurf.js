@@ -31,7 +31,6 @@ const MitoSurf=()=>{
                     </div>
                 </Content>
             )}
-            <Outlet/>
         </div>
     );
 }
