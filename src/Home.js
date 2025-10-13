@@ -12,7 +12,7 @@ const Home = () => {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
-    const [page,setPage]=useState('microScripts');
+    const [page,setPage]=useState('home');
 
     const navigate = useNavigate();
     const onClick=(data)=>{

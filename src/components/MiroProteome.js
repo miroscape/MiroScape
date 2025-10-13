@@ -31,7 +31,6 @@ const MicroProteome=()=>{
                     </div>
                 </Content>
             )}
-            <Outlet/>
         </div>
     );
 }
