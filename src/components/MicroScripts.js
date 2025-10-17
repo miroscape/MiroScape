@@ -8,10 +8,10 @@ import {RiBrainLine, RiDatabaseLine, RiEarthLine, RiHome5Line, RiMickeyLine, RiT
 const {Header, Content ,Sider} = Layout;
 
 const items = [{icon:React.createElement(RiHome5Line),key: 'home', label: 'Home'},
-    {icon:React.createElement(RiBrainLine),key: 'populationAnalysis', label: 'Population Analysis'},
-    {icon:React.createElement(RiMickeyLine),key: 'mouseSnRNASeq', label: 'Mouse snRNA-seq'},
-    {icon:React.createElement(RiTeamLine),key: 'humanBulkRNASeq', label: 'Human bulk RNA-seq'},
-    {icon:React.createElement(RiEarthLine),key: 'crossSpeciesAnalysis', label: 'Cross-species Analysis'},
+    {icon:React.createElement(RiBrainLine),key: 'populationAnalysis', label: 'Population Data'},
+    {icon:React.createElement(RiMickeyLine),key: 'mouseSnRNASeq', label: 'Mouse snRNA'},
+    {icon:React.createElement(RiTeamLine),key: 'humanBulkRNASeq', label: 'Human bulk RNA'},
+    {icon:React.createElement(RiEarthLine),key: 'crossSpeciesAnalysis', label: 'Cross-species'},
     {icon:React.createElement(RiDatabaseLine),key: 'dataSource', label: 'Data Source'}];
 const MicroScripts=()=>{
     const {
