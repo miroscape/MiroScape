@@ -8,12 +8,12 @@ function coerceNum(x) {
 }
 
 const headerMap = {
-  gene: ["name", "gene", "symbol", "Gene", "Name"],
-  log2FC: ["log2FC", "log2FoldChange", "log2FoldChg"],
-  pvalue: ["p-value", "pvalue", "P.Value", "p_val"],
-  qvalue: ["q-value", "qvalue", "padj", "FDR"],
-  baseMean: ["aveEXP", "baseMean", "AveExpr"],
-  tvalue: ["t", "t-value", "tstat", "t_stat"]
+  gene: ["gene", "name", "symbol", "Gene", "Name", "GeneID"],
+  log2FC: ["log2FC","log2FoldChange","log2FoldChg","logFC","logFC_mouse"],
+  pvalue: ["pvalue","p-value","p_val","P.Value","PValue","P.VALUE"],
+  qvalue: ["padj", "FDR", "adj.P.Val", "adj_pval", "qvalue", "q-value"],
+  baseMean: ["baseMean", "AveExpr", "aveEXP", "AveExp", "AveExpression"],
+  tvalue: ["t", "t-value", "tstat", "t_stat", "stat"]
 };
 
 function findCol(obj, aliases) {
