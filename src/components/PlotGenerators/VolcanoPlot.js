@@ -30,7 +30,7 @@ function findCol(obj, aliases) {
   return null;
 }
 
-export default function App() {
+export default function VolcanoPlot() {
   const [rows, setRows] = useState([]);
   const [geneQuery, setGeneQuery] = useState("");
   const [pCut, setPCut] = useState(0.05);
@@ -38,7 +38,7 @@ export default function App() {
   const [topN, setTopN] = useState(20);
 
   useEffect(() => {
-    Papa.parse("/data/TCGA_GBM_vs_Brain.csv", {
+    Papa.parse("%PUBLIC_URL%/data/TCGA_GBM_vs_Brain.csv", {
       download: true,
       header: true,
       dynamicTyping: false,
