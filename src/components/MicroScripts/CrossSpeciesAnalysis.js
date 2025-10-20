@@ -15,7 +15,7 @@ const CrossSpeciesAnalysis=()=>{
     const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
     const location = useLocation();
     useEffect(()=>{
-        setShouldRenderOtherComponents(location.pathname.startsWith('/microScripts/crossSpeciesAnalysis'))
+        setShouldRenderOtherComponents(location.pathname.startsWith('/miroScripts/crossSpeciesAnalysis'))
     },[location.pathname])
 
     return (

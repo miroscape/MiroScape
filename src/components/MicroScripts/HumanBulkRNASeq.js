@@ -16,7 +16,7 @@ const HumanBulkRNASeq=()=>{
     const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
     const location = useLocation();
     useEffect(()=>{
-        setShouldRenderOtherComponents(location.pathname.startsWith('/microScripts/humanBulkRNASeq'))
+        setShouldRenderOtherComponents(location.pathname.startsWith('/miroScripts/humanBulkRNASeq'))
     },[location.pathname])
 
     return (

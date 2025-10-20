@@ -7,7 +7,7 @@ import {RiBrainLine, RiDatabaseLine, RiEarthLine, RiHome5Line, RiMickeyLine, RiT
 // import Sider from "antd/es/layout/Sider";
 const {Header, Content ,Sider} = Layout;
 
-const MicroScriptsHome=()=>{
+const MiroScriptsHome=()=>{
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
@@ -15,7 +15,7 @@ const MicroScriptsHome=()=>{
     const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
     const location = useLocation();
     useEffect(()=>{
-        setShouldRenderOtherComponents(location.pathname.startsWith('/microScripts/home'))
+        setShouldRenderOtherComponents(location.pathname.startsWith('/miroScripts/home'))
     },[location.pathname])
 
     return (
@@ -67,4 +67,4 @@ const MicroScriptsHome=()=>{
         </div>
     );
 }
-export default MicroScriptsHome;
+export default MiroScriptsHome;

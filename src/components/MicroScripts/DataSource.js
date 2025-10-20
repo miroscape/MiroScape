@@ -73,7 +73,7 @@ const DataSource=()=>{
     const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
     const location = useLocation();
     useEffect(()=>{
-        setShouldRenderOtherComponents(location.pathname.startsWith('/microScripts/dataSource'))
+        setShouldRenderOtherComponents(location.pathname.startsWith('/miroScripts/dataSource'))
     },[location.pathname])
 
     return (

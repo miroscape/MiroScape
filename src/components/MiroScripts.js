@@ -13,7 +13,7 @@ const items = [{icon:React.createElement(RiHome5Line),key: 'home', label: 'Home'
     {icon:React.createElement(RiTeamLine),key: 'humanBulkRNASeq', label: 'Human bulk RNA'},
     {icon:React.createElement(RiEarthLine),key: 'crossSpeciesAnalysis', label: 'Cross-species'},
     {icon:React.createElement(RiDatabaseLine),key: 'dataSource', label: 'Data Source'}];
-const MicroScripts=()=>{
+const MiroScripts=()=>{
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
@@ -22,13 +22,13 @@ const MicroScripts=()=>{
     const navigate = useNavigate();
     const onClick=(data)=>{
         console.log('click ', data);
-        navigate(`/microScripts/${data.key}`);
+        navigate(`/miroScripts/${data.key}`);
         setPage(data.key);
     };
     const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
     const location = useLocation();
     useEffect(()=>{
-        setShouldRenderOtherComponents(location.pathname.startsWith('/microScripts'))
+        setShouldRenderOtherComponents(location.pathname.startsWith('/miroScripts'))
     },[location.pathname])
 
     return (
@@ -58,4 +58,4 @@ const MicroScripts=()=>{
         </div>
     );
 }
-export default MicroScripts;
+export default MiroScripts;

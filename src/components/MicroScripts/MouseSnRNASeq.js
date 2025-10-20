@@ -17,7 +17,7 @@ const MouseSnRNASeq=()=>{
     const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
     const location = useLocation();
     useEffect(()=>{
-        setShouldRenderOtherComponents(location.pathname.startsWith('/microScripts/mouseSnRNASeq'))
+        setShouldRenderOtherComponents(location.pathname.startsWith('/miroScripts/mouseSnRNASeq'))
     },[location.pathname])
 
     return (

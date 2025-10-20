@@ -4,9 +4,9 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import {Outlet, useNavigate} from "react-router-dom";
 const { Header, Content } = Layout;
 const items = [{key: 'home', label: 'Home'},
-    {key: 'microScripts', label: 'MicroScripts'},
+    {key: 'miroScripts', label: 'MiroScripts'},
     {key: 'mitoSurf', label: 'MitoSurf'},
-    {key: 'microProteome', label: 'MiroProteome'}];
+    {key: 'miroProteome', label: 'MiroProteome'}];
 const Home = () => {
     const {
         token: { colorBgContainer, borderRadiusLG },

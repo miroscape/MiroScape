@@ -1,15 +1,16 @@
 import {createHashRouter, Navigate, RouterProvider} from "react-router-dom";
 import Home from "./Home";
-import MicroScripts from "./components/MicroScripts";
+import MiroScripts from "./components/MiroScripts";
 import MitoSurf from "./components/MitoSurf";
-import MicroProteome from "./components/MiroProteome";
-import MicroScriptsHome from "./components/MicroScripts/MicroScriptsHome";
+import MiroProteome from "./components/MiroProteome";
+import MiroScriptsHome from "./components/MicroScripts/MiroScriptsHome";
 import CrossSpeciesAnalysis from "./components/MicroScripts/CrossSpeciesAnalysis";
 import DataSource from "./components/MicroScripts/DataSource";
 import HumanBulkRNASeq from "./components/MicroScripts/HumanBulkRNASeq";
 import MouseSnRNASeq from "./components/MicroScripts/MouseSnRNASeq";
 import PopulationAnalysis from "./components/MicroScripts/PopulationAnalysis";
 import Introduction from "./components/Introduction";
+import FA from "./components/MiroProteome/FA";
 
 const BasicRoute = () => {
 
@@ -27,42 +28,52 @@ const BasicRoute = () => {
                     element:<Introduction/>,
                 },
                 {
-                    path:'/microScripts',
-                    element:<MicroScripts/>,
+                    path:'/miroScripts',
+                    element:<MiroScripts/>,
                     children: [
                         {
                             index: true,
-                            element: <Navigate to="/microScripts/home" replace />,
+                            element: <Navigate to="/miroScripts/home" replace />,
                         },
                         {
-                            path:'/microScripts/home',
-                            element: <MicroScriptsHome/>,
+                            path:'/miroScripts/home',
+                            element: <MiroScriptsHome/>,
                         },
                         {
-                            path:'/microScripts/crossSpeciesAnalysis',
+                            path:'/miroScripts/crossSpeciesAnalysis',
                             element: <CrossSpeciesAnalysis/>,
                         },
                         {
-                            path:'/microScripts/dataSource',
+                            path:'/miroScripts/dataSource',
                             element: <DataSource/>,
                         },
                         {
-                            path:'/microScripts/humanBulkRNASeq',
+                            path:'/miroScripts/humanBulkRNASeq',
                             element: <HumanBulkRNASeq/>,
                         },
                         {
-                            path:'/microScripts/mouseSnRNASeq',
+                            path:'/miroScripts/mouseSnRNASeq',
                             element: <MouseSnRNASeq/>,
                         },
                         {
-                            path:'/microScripts/populationAnalysis',
+                            path:'/miroScripts/populationAnalysis',
                             element: <PopulationAnalysis/>,
                         }
                     ]
                 },
                 {
-                    path:'/microProteome',
-                    element:<MicroProteome/>,
+                    path:'/miroProteome',
+                    element:<MiroProteome/>,
+                    children: [
+                        {
+                            index: true,
+                            element: <Navigate to="/miroProteome/FA" replace />,
+                        },
+                        {
+                            path:'/miroProteome/FA',
+                            element: <FA/>,
+                        }
+                    ]
                 },
                 {
                     path:'/mitoSurf',

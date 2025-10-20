@@ -16,7 +16,7 @@ const PopulationAnalysis=()=>{
     const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
     const location = useLocation();
     useEffect(()=>{
-        setShouldRenderOtherComponents(location.pathname.startsWith('/microScripts/populationAnalysis'))
+        setShouldRenderOtherComponents(location.pathname.startsWith('/miroScripts/populationAnalysis'))
     },[location.pathname])
 
     return (
