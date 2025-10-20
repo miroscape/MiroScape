@@ -38,7 +38,7 @@ export default function VolcanoPlot() {
   const [topN, setTopN] = useState(20);
 
   useEffect(() => {
-    Papa.parse("%PUBLIC_URL%/data/TCGA_GBM_vs_Brain.csv", {
+    Papa.parse(`${process.env.PUBLIC_URL}/data/TCGA_GBM_vs_Brain.csv`, {
       download: true,
       header: true,
       dynamicTyping: false,
