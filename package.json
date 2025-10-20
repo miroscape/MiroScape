@@ -12,15 +12,18 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.27.4",
     "iframe-resizer-react": "^5.1.5",
+    "papaparse": "^5.5.3",
+    "plotly.js": "^3.1.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-plotly.js": "^2.6.0",
     "react-router-dom": "^7.9.4",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "deploy" : "gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
