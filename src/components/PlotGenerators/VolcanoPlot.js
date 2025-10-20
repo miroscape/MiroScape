@@ -30,7 +30,7 @@ function findCol(obj, aliases) {
   return null;
 }
 
-export default function App() {
+export default function VolcanoPlot({dataUrl}) {
   const [rows, setRows] = useState([]);
   const [geneQuery, setGeneQuery] = useState("");
   const [pCut, setPCut] = useState(0.05);
@@ -38,7 +38,7 @@ export default function App() {
   const [topN, setTopN] = useState(5);
 
   useEffect(() => {
-    Papa.parse("data/TCGA_GBM_vs_Brain.csv", {
+    Papa.parse(`${process.env.PUBLIC_URL}/data/${dataUrl}`, {
       download: true,
       header: true,
       dynamicTyping: false,
@@ -68,14 +68,14 @@ export default function App() {
       return { gene, log2FC, pvalue, qvalue, baseMean, tvalue };
     });
 
-    arr = arr.filter(d => 
-      d.gene && 
-      Number.isFinite(d.log2FC) && 
+    arr = arr.filter(d =>
+      d.gene &&
+      Number.isFinite(d.log2FC) &&
       Number.isFinite(d.pvalue)
     );
 
     // min_p <- .Machine$double.eps; plot_data$pvalue[plot_data$pvalue <= 0] <- min_p
-    const min_p = Number.EPSILON; 
+    const min_p = Number.EPSILON;
     arr.forEach(d => {
       if (d.pvalue <= 0) {
         d.pvalue = min_p;
