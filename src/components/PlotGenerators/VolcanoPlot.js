@@ -8,12 +8,12 @@ function coerceNum(x) {
 }
 
 const headerMap = {
-  gene: ["name", "gene", "symbol", "Gene", "Name"],
-  log2FC: ["log2FC", "log2FoldChange", "log2FoldChg"],
-  pvalue: ["p-value", "pvalue", "P.Value", "p_val"],
-  qvalue: ["q-value", "qvalue", "padj", "FDR"],
-  baseMean: ["aveEXP", "baseMean", "AveExpr"],
-  tvalue: ["t", "t-value", "tstat", "t_stat"]
+  gene: ["gene", "name", "symbol", "Gene", "Name", "GeneID"],
+  log2FC: ["log2FC","log2FoldChange","log2FoldChg","logFC","logFC_mouse"],
+  pvalue: ["pvalue","p-value","p_val","P.Value","PValue","P.VALUE"],
+  qvalue: ["padj", "FDR", "adj.P.Val", "adj_pval", "qvalue", "q-value"],
+  baseMean: ["baseMean", "AveExpr", "aveEXP", "AveExp", "AveExpression"],
+  tvalue: ["t", "t-value", "tstat", "t_stat", "stat"]
 };
 
 function findCol(obj, aliases) {
@@ -35,7 +35,7 @@ export default function VolcanoPlot() {
   const [geneQuery, setGeneQuery] = useState("");
   const [pCut, setPCut] = useState(0.05);
   const [fcCut, setFcCut] = useState(1);
-  const [topN, setTopN] = useState(20);
+  const [topN, setTopN] = useState(5);
 
   useEffect(() => {
     Papa.parse("%PUBLIC_URL%/data/TCGA_GBM_vs_Brain.csv", {
@@ -60,16 +60,28 @@ export default function VolcanoPlot() {
 
     let arr = rows.map(r => {
       const gene = (r[geneCol] ?? "").toString().trim();
-      let pvalue = coerceNum(r[pCol]);
-      if (!Number.isFinite(pvalue) || pvalue <= 0) pvalue = Number.EPSILON;
       const log2FC = coerceNum(r[fcCol]);
+      const pvalue = coerceNum(r[pCol]);
       const qvalue = qCol ? coerceNum(r[qCol]) : undefined;
       const baseMean = baseCol ? coerceNum(r[baseCol]) : undefined;
       const tvalue = tCol ? coerceNum(r[tCol]) : undefined;
       return { gene, log2FC, pvalue, qvalue, baseMean, tvalue };
     });
 
-    arr = arr.filter(d => Number.isFinite(d.log2FC) && Number.isFinite(d.pvalue));
+    arr = arr.filter(d =>
+      d.gene &&
+      Number.isFinite(d.log2FC) &&
+      Number.isFinite(d.pvalue)
+    );
+
+    // min_p <- .Machine$double.eps; plot_data$pvalue[plot_data$pvalue <= 0] <- min_p
+    const min_p = Number.EPSILON;
+    arr.forEach(d => {
+      if (d.pvalue <= 0) {
+        d.pvalue = min_p;
+      }
+    });
+
     arr.forEach(d => (d.negLog10P = -Math.log10(d.pvalue)));
 
     arr.forEach(d => {
@@ -117,7 +129,7 @@ export default function VolcanoPlot() {
       mode: "markers",
       type: "scatter",
       name: "Target",
-      marker: { size: 10, color: "#ff6b35", line: { width: 2, color: "#fff" } },
+      marker: { size: 10, color: "#070302ff", line: { width: 2, color: "#fff" } },
       hovertemplate: "<b>%{text}</b><br>log2FC=%{x:.2f}<br>-log10(p)=%{y:.2f}<extra></extra>"
     } : null;
 
