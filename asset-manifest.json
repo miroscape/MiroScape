@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.f855e6bc.css",
-    "main.js": "./static/js/main.4a06ebfa.js",
-    "static/js/453.04cccfb2.chunk.js": "./static/js/453.04cccfb2.chunk.js",
-    "static/media/labicon.jpg": "./static/media/labicon.a99c98ada5d272d85806.jpg",
-    "static/media/crossvolcano.png": "./static/media/crossvolcano.04fcf33d5b2d7566b001.png",
-    "static/media/workload.png": "./static/media/workload.422e4d8c492de429f903.png",
-    "static/media/humanvolcano.png": "./static/media/humanvolcano.8cd1e6bfd174734f334f.png",
-    "index.html": "./index.html",
-    "main.f855e6bc.css.map": "./static/css/main.f855e6bc.css.map",
-    "main.4a06ebfa.js.map": "./static/js/main.4a06ebfa.js.map",
-    "453.04cccfb2.chunk.js.map": "./static/js/453.04cccfb2.chunk.js.map"
+    "main.css": "/miroscape/static/css/main.f855e6bc.css",
+    "main.js": "/miroscape/static/js/main.18d8a562.js",
+    "static/js/453.04cccfb2.chunk.js": "/miroscape/static/js/453.04cccfb2.chunk.js",
+    "static/media/labicon.jpg": "/miroscape/static/media/labicon.a99c98ada5d272d85806.jpg",
+    "static/media/crossvolcano.png": "/miroscape/static/media/crossvolcano.04fcf33d5b2d7566b001.png",
+    "static/media/workload.png": "/miroscape/static/media/workload.422e4d8c492de429f903.png",
+    "static/media/humanvolcano.png": "/miroscape/static/media/humanvolcano.8cd1e6bfd174734f334f.png",
+    "index.html": "/miroscape/index.html",
+    "main.f855e6bc.css.map": "/miroscape/static/css/main.f855e6bc.css.map",
+    "main.18d8a562.js.map": "/miroscape/static/js/main.18d8a562.js.map",
+    "453.04cccfb2.chunk.js.map": "/miroscape/static/js/453.04cccfb2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.4a06ebfa.js"
+    "static/js/main.18d8a562.js"
   ]
 }
