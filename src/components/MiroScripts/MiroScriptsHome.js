@@ -26,7 +26,7 @@ const MiroScriptsHome=()=>{
                     <Row>
                         <Col span={4}>
                             <Image style={{ padding: '12px 36px'}}
-                                src={require('../../assets/labicon.jpg')}
+                                src={require('../../assets/logo-chem1.png')}
                             />
                         </Col>
                         <Col span={20}>
