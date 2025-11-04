@@ -35,27 +35,23 @@ export default function FA() {
     setShouldRenderOtherComponents(location.pathname === '/miroProteome/FA')
   }, [location.pathname]);
 
-  // 处理基因数据的函数，等价于R的make_gene_table_one
   const makeGeneTableOne = (gene, digits = 3) => {
     if (!excelData || excelData.length === 0) return null;
 
     const headers = excelData[0];
     const dataRows = excelData.slice(1);
 
-    // 找基因列
     let geneColIndex = headers.findIndex(h => 
       typeof h === 'string' && h.toLowerCase().includes('gene')
     );
-    if (geneColIndex === -1) geneColIndex = 1; // 默认第二列
+    if (geneColIndex === -1) geneColIndex = 1;
 
-    // 找到对应基因的行
     const geneRow = dataRows.find(row => row[geneColIndex] === gene);
     if (!geneRow) {
       console.log(`Gene not found: ${gene}`);
       return null;
     }
 
-    // 辅助函数：按正则表达式找列并获取值
     const getOne = (pattern) => {
       const regex = new RegExp(pattern, 'i');
       const colIndex = headers.findIndex(h => typeof h === 'string' && regex.test(h));
@@ -64,7 +60,6 @@ export default function FA() {
       return isNaN(value) ? null : value;
     };
 
-    // 提取各列数据
     const cm_fa_dmso = getOne("Cardiomyocyte\\s*FA.*DMSO");
     const cm_fa_mr3 = getOne("Cardiomyocyte\\s*FA.*MR3");
     const cm_iso_dmso = getOne("Cardiomyocyte\\s*Iso\\s*Ctrl.*DMSO|Cardiomyocyte\\s*IsoCtrl.*DMSO");
@@ -78,7 +73,6 @@ export default function FA() {
     const fib_fa = getOne("^Fibroblast\\s*FA");
     const fib_hc = getOne("^Fibroblast\\s*Healthy|^Fibroblast\\s*HC");
 
-    // 格式化数值
     const formatValue = (val) => {
       if (val === null || val === undefined) return null;
       return Math.round(val * Math.pow(10, digits)) / Math.pow(10, digits);
@@ -104,18 +98,16 @@ export default function FA() {
           cardiomyocytes_iso: formatValue(cm_iso_mr3),
           sensory_neurons_fa: formatValue(sn_fa_mr3),
           sensory_neurons_iso: formatValue(sn_iso_mr3),
-          fibroblasts_fa: null, // MR3行为NA
-          fibroblasts_hc: null  // MR3行为NA
+          fibroblasts_fa: null, 
+          fibroblasts_hc: null
         }
       ]
     };
   };
 
-  // 生成热力图数据
   const generateHeatmapData = (geneData) => {
     if (!geneData) return null;
 
-    // X轴：细胞类型
     const xLabels = [
       "Cardiomyocytes FA",
       "Cardiomyocytes Iso Ctrl", 
@@ -127,9 +119,7 @@ export default function FA() {
 
     const yLabels = ["MR3_+", "MR3_-"];
 
-    // Z值矩阵 (2行6列)
     const zValues = [
-      // MR3行
       [
         geneData.data[1].cardiomyocytes_fa,
         geneData.data[1].cardiomyocytes_iso,
@@ -138,7 +128,6 @@ export default function FA() {
         geneData.data[1].fibroblasts_fa,
         geneData.data[1].fibroblasts_hc
       ],
-      // DMSO行
       [
         geneData.data[0].cardiomyocytes_fa,
         geneData.data[0].cardiomyocytes_iso,
@@ -155,21 +144,21 @@ export default function FA() {
       z: zValues,
       type: 'heatmap',
       colorscale: [
-        [0, '#f8f9fa'],      // 最小值：浅灰/白色
-        [0.1, '#e3f2fd'],    // 接近0：浅蓝
-        [0.5, '#2196f3'],    // 中等值：蓝色
-        [1, '#0d47a1']       // 最大值：深蓝
+        [0, '#f8f9fa'],
+        [0.1, '#e3f2fd'],
+        [0.5, '#2196f3'],
+        [1, '#0d47a1']
       ],
       showscale: true,
       colorbar: {
         title: "Expression Level",
         titleside: "right",
-        thickness: 25,        // 从15增加到25，让bar更宽
-        len: 0.9,            // 从0.7增加到0.9，让bar更长
-        x: 1.02,             // 调整bar的水平位置
-        y: 0.5,              // 垂直居中
-        xanchor: "left",     // 锚点在左侧
-        yanchor: "middle"    // 垂直居中锚点
+        thickness: 25,
+        len: 0.9,
+        x: 1.02,
+        y: 0.5,
+        xanchor: "left",
+        yanchor: "middle"
       },
       hoverongaps: false,
       hovertemplate: 
@@ -180,7 +169,6 @@ export default function FA() {
     };
   };
 
-  // 处理基因查询
   const handleGeneSearch = () => {
     const result = makeGeneTableOne(geneQuery);
     setGeneTableData(result);
@@ -189,7 +177,6 @@ export default function FA() {
   const heatmapTrace = geneTableData ? generateHeatmapData(geneTableData) : null;
 
   return (
-
       <div>
         {shouldRenderOtherComponents && (
             <>
@@ -200,18 +187,14 @@ export default function FA() {
                   />
                 </Col>
                 <Col span={20}>
-                  <Content style={{  fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Arial'}}>
-                    This dataset contains proteomic data from fibroblasts, sensory neurons, and cardiomyocytes derived from Friedreich’s Ataxia (FA) patients and controls, with and without MR3 treatment. Chandra et al. 2025 (DOI TBD).
+                  <Content style={{  fontWeight: 'bold',padding: '12px 36px',fontSize:'20px',fontFamily:'Arial'}}>
+                    This dataset contains proteomic data from fibroblasts, sensory neurons, and cardiomyocytes derived from Friedreich's Ataxia (FA) patients and controls, with and without MR3 treatment. Chandra et al. 2025 (DOI TBD).
                   </Content>
-                  {/*<Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>*/}
-                  {/*  This interactive platform presents integrated transcriptomic analyses of glioma, combining TCGA bulk RNA-seq, MR3-treated mouse snRNA-seq, and ex vivo treated human tumor samples. Users can interactively explore cell-type patterns, compare across species, and download key gene expression results. The platform enables investigation of conserved transcriptional pathways associated with mitochondrial regulator Miro1 perturbation.*/}
-                  {/*</Content>*/}
                 </Col>
               </Row>
               <div style={{ maxWidth: 1200, margin: "0 auto", padding: 20 }}>
-                <h1>Search Your Protein in Our Data!</h1>
+                <h2>Search Your Protein in Our Data!</h2>
 
-                {/* 基因查询输入 */}
                 <div style={{ marginBottom: 20 }}>
                   <label>Gene Name: </label>
                   <input
@@ -229,12 +212,10 @@ export default function FA() {
                   </button>
                 </div>
 
-                {/* 数据表格 */}
                 {geneTableData && (
                   <div>
                     <h4>Protein Log2(LFQ Intensity) for {geneTableData.gene}</h4>
 
-                    {/* 数值表格 */}
                     <div style={{ marginBottom: 30 }}>
                       <h5>Data Table</h5>
                       <table style={{ borderCollapse: "collapse", fontSize: 14, marginBottom: 20 }}>
@@ -279,7 +260,6 @@ export default function FA() {
                       </table>
                     </div>
 
-                    {/* Plotly热力图 */}
                     <div style={{ marginTop: 30 }}>
                       <h5>Heatmap Visualization</h5>
                       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -295,11 +275,11 @@ export default function FA() {
                               },
                               yaxis: {
                                 title: "Treatment",
-                                autorange: "reversed" // 让DMSO在下面
+                                autorange: "reversed"
                               },
                               width: 900,
                               height: 250,
-                              margin: { l: 80, r: 120, t: 60, b: 120 } // 右边距从120增加到150，为更宽的bar留空间
+                              margin: { l: 80, r: 120, t: 60, b: 120 }
                             }}
                             config={{
                               displaylogo: false,
