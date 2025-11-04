@@ -30,26 +30,26 @@ const Introduction=()=>{
                                     />
                                 </Col>
                                 <Col span={20}>
-                                    <Content style={{  fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Rubik'}}>
+                                    <Content style={{  fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Arial'}}>
                                         Welcome to MiroScape!
                                     </Content>
-                                    <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Rubik'}}>
+                                    <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>
                                         This platform brings together three different levels of datasets on Miro1, a key mitochondrial outer membrane protein involved in regulating mitochondrial dynamics and signaling. MiroScript explores transcriptomic changes, MitoSurf profiles the mitochondrial surface proteome, and Miro Proteome captures whole-cell proteomic responses under MR3 treatment or Miro1 modulation. Together, they provide a multi-layered view of how Miro1 shapes cellular and mitochondrial landscapes.
                                     </Content>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col span={24}>
-                                    <Content style={{ fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Rubik'}}>
+                                    <Content style={{ fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Arial'}}>
                                         If using MiroScape or the data provided, please cite:
                                     </Content>
-                                    <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Rubik'}}>
-                                        Du, Z.*; Li, M.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Choi, J.; Kim, L.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, Miro1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
+                                    <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>
+                                        Du, Z.*; Li, M.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Kim, L.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
                                     </Content>
-                                    <Content style={{ fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Rubik'}}>
+                                    <Content style={{ fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Arial'}}>
                                         Contact:
                                     </Content>
-                                    <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Rubik'}}>
+                                    <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>
                                         Comments, suggestions, questions are welcomed, and should be directed to Xinnan Wang (xinnanw@stanford.edu)
                                     </Content>
                                 </Col>

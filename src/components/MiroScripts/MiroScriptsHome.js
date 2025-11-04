@@ -45,13 +45,7 @@ const MiroScriptsHome=()=>{
                                 If using MiroScape or the data provided, please cite:
                             </Content>
                             <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>
-                                Du, Z.*; Li, M.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Choi, J.; Kim, L.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, Miro1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
-                            </Content>
-                            <Content style={{ fontWeight: 'bold',padding: '12px 36px',fontSize:'20px',fontFamily:'Arial'}}>
-                                Contact:
-                            </Content>
-                            <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>
-                                Comments, suggestions, questions are welcomed, and should be directed to Xinnan Wang (xinnanw@stanford.edu)
+                                Du, Z.*; Li, M.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Kim, L.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
                             </Content>
                         </Col>
                     </Row>
