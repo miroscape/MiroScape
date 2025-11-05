@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import * as XLSX from 'xlsx';
-import Plot from 'react-plotly.js';
 
 export default function TestPage() {
   const [geneTableData, setGeneTableData] = useState(null);
