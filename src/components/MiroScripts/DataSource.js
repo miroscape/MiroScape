@@ -102,11 +102,17 @@ const DataSource=()=>{
 
         <div>
             {shouldRenderOtherComponents && (
-                // <Row>
-                //     <Col span={24}>
-                        <Table style={{ padding: '12px 36px',width:'1000px'}} pagination={false} showHeader={false} columns={columns} dataSource={data} />
-                //     </Col>
-                // </Row>
+                <>
+                    <Table style={{ padding: '12px 36px',width:'1000px'}} pagination={false} showHeader={false} columns={columns} dataSource={data} />
+                    <div style={{ 
+                        padding: '24px 36px', 
+                        fontSize: '14px', 
+                        color: '#666',
+                        lineHeight: '1.6'
+                    }}>
+                        <strong>Acknowledgement:</strong><br/> Population analysis in this study is adapted from GEPIA3 (Yu-Jian Kang, Lingjie Pan, Yiyu Liu, Zhengqin Rong, Jiaxi Liu, Fenglin Liu. GEPIA3: Enhanced drug sensitivity and interaction network analysis for cancer research. Nucleic Acids Research, 2025 May 21; gkaf423. doi: 10.1093/nar/gkaf423).
+                    </div>
+                </>
             )}
         </div>
     );
