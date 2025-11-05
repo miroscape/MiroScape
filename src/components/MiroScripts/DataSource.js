@@ -6,6 +6,16 @@ import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {RiBrainLine, RiDatabaseLine, RiEarthLine, RiHome5Line, RiMickeyLine, RiTeamLine} from "@remixicon/react";
 // import Sider from "antd/es/layout/Sider";
 const {Header, Content ,Sider} = Layout;
+
+const handleDownload = (filename) => {
+    const link = document.createElement('a');
+    link.href = `${process.env.PUBLIC_URL}/data/${filename}`;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
 const columns = [
     {
         // title: 'Name',
@@ -22,49 +32,61 @@ const columns = [
         key: 'action',
         render: (_, record) => (
             <Space size="middle">
-                <a>Download</a>
+                {record.downloadable ? (
+                    <a onClick={() => handleDownload(record.filename)}>Download</a>
+                ) : (
+                    <span style={{ color: '#999' }}>Download</span>
+                )}
             </Space>
         ),
     },
 ];
+
 const data = [
     {
         key: '1',
         name:'Glioma DEGs:',
         age:'Download DE Results',
-
+        downloadable: true,
+        filename: 'TCGA_GBM_vs_Brain.csv'
     },
     {
         key: '2',
         name:'Mouse RM3 DEGs:',
         age:'Download sn DE Results',
-
+        downloadable: true,
+        filename: 'mouse_sn_DE.csv'
     },
     {
         key: '3',
         name:'',
         age:'Download Bulk DE Results',
-
+        downloadable: true,
+        filename: 'mouse_pseudobulk_de_results.csv'
     },
     {
         key: '4',
         name:'',
         age:'Download Raw Data',
-
+        downloadable: false,
+        filename: ''
     },
     {
         key: '5',
         name:'Human MR3 DEGs:',
         age:'Download DE Results',
-
+        downloadable: true,
+        filename: 'deseq2_results_with_plain.csv'
     },
     {
         key: '6',
         name:'',
         age:'Download Raw Data',
-
+        downloadable: false,
+        filename: ''
     },
 ];
+
 const DataSource=()=>{
     const {
         token: { colorBgContainer, borderRadiusLG },
