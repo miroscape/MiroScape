@@ -7,7 +7,7 @@ import {Content} from "antd/es/layout/layout";
 
 export default function FA() {
   const [geneTableData, setGeneTableData] = useState(null);
-  const [geneQuery, setGeneQuery] = useState("MYH7");
+  const [geneQuery, setGeneQuery] = useState("");
   const [excelData, setExcelData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
@@ -181,32 +181,41 @@ export default function FA() {
         {shouldRenderOtherComponents && (
             <>
               <Row>
-                <Col span={4}>
-                  <Image style={{ padding: '12px 36px'}}
+                <Col span={5}>
+                  <Image style={{ padding: '10px 10px 0px 30px'}}
                          src={require('../../assets/logo-chem1.png')}
                   />
                 </Col>
-                <Col span={20}>
-                  <Content style={{  fontWeight: 'bold',padding: '12px 36px',fontSize:'20px',fontFamily:'Arial'}}>
+                <Col span={19}>
+                  <Content style={{ fontWeight: 'bold', padding: '12px 24px', fontSize: '24px', fontFamily: 'Arial' }}>
+                    Welcome to MiroProteome-FA!
+                  </Content>
+                  <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
                     This dataset contains proteomic data from fibroblasts, sensory neurons, and cardiomyocytes derived from Friedreich's Ataxia (FA) patients and controls, with and without MR3 treatment. Chandra et al. 2025 (DOI TBD).
+                  </Content>
+                  <Content style={{ fontWeight: 'bold', padding: '12px 24px 6px 24px', fontSize: '20px', fontFamily: 'Arial' }}>
+                    If using MiroScape or the data provided, please cite:
+                  </Content>
+                  <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
+                    Du, Z.*; Li, M.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Kim, L.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
                   </Content>
                 </Col>
               </Row>
-              <div style={{ maxWidth: 1200, margin: "0 auto", padding: 20 }}>
-                <h2>Search Your Protein in Our Data!</h2>
+              <div style={{ maxWidth: 1200, margin: "0", padding: "0px 20px 20px 20px" }}>
+                <h2 style={{ fontSize: '22px' }}>Search Your Protein in Our Data!</h2>
 
                 <div style={{ marginBottom: 20 }}>
-                  <label>Gene Name: </label>
+                  <label style={{ fontSize: '16px' }}>Gene Name: </label>
                   <input
                     value={geneQuery}
                     onChange={(e) => setGeneQuery(e.target.value)}
                     placeholder="Enter gene name (e.g., MYH7)"
-                    style={{ marginRight: 10, padding: 5, width: 200 }}
+                    style={{ marginRight: 10, padding: '8px', width: 250, fontSize: '16px' }}
                   />
                   <button
                     onClick={handleGeneSearch}
                     disabled={loading}
-                    style={{ padding: 5, backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: 3 }}
+                    style={{ padding: '5px 16px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: 3, fontSize: '16px' }}
                   >
                     {loading ? 'Loading...' : 'Search Gene'}
                   </button>
@@ -214,44 +223,44 @@ export default function FA() {
 
                 {geneTableData && (
                   <div>
-                    <h4>Protein Log2(LFQ Intensity) for {geneTableData.gene}</h4>
+                    <h4 style={{ fontSize: '16px', marginBottom: '10px' }}>Protein Log2(LFQ Intensity) for {geneTableData.gene}</h4>
 
-                    <div style={{ marginBottom: 30 }}>
-                      <h5>Data Table</h5>
-                      <table style={{ borderCollapse: "collapse", fontSize: 14, marginBottom: 20 }}>
+                    <div style={{ marginBottom: 20 }}>
+                      <h5 style={{ fontSize: '16px',marginBottom: '20px' }}>Data Table</h5>
+                      <table style={{ borderCollapse: "collapse", fontSize: 16, marginBottom: 20 }}>
                         <thead>
                           <tr style={{ backgroundColor: "#f5f5f5" }}>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>MR3</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Cardiomyocytes FA</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Cardiomyocytes Iso Ctrl</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Sensory Neurons FA</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Sensory Neurons Iso Ctrl</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Fibroblasts FA</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Fibroblasts HC</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>MR3</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Cardiomyocytes FA</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Cardiomyocytes Iso Ctrl</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Sensory Neurons FA</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Sensory Neurons Iso Ctrl</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Fibroblasts FA</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Fibroblasts HC</th>
                           </tr>
                         </thead>
                         <tbody>
                           {geneTableData.data.map((row, index) => (
                             <tr key={index}>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center", fontWeight: "bold" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontWeight: "bold", fontSize: '16px' }}>
                                 {row.mr3}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.cardiomyocytes_fa !== null ? row.cardiomyocytes_fa : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.cardiomyocytes_iso !== null ? row.cardiomyocytes_iso : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.sensory_neurons_fa !== null ? row.sensory_neurons_fa : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.sensory_neurons_iso !== null ? row.sensory_neurons_iso : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.fibroblasts_fa !== null ? row.fibroblasts_fa : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.fibroblasts_hc !== null ? row.fibroblasts_hc : '-'}
                               </td>
                             </tr>
@@ -261,7 +270,7 @@ export default function FA() {
                     </div>
 
                     <div style={{ marginTop: 30 }}>
-                      <h5>Heatmap Visualization</h5>
+                      <h5 style={{ fontSize: '16px', marginBottom: '10px' }}>Heatmap Visualization</h5>
                       <div style={{ display: "flex", justifyContent: "center" }}>
                         {heatmapTrace && (
                           <Plot
@@ -278,8 +287,8 @@ export default function FA() {
                                 autorange: "reversed"
                               },
                               width: 900,
-                              height: 250,
-                              margin: { l: 80, r: 120, t: 60, b: 120 }
+                              height: 300,
+                              margin: { l: 80, r: 120, t: 60, b: 150 }
                             }}
                             config={{
                               displaylogo: false,
@@ -291,12 +300,12 @@ export default function FA() {
                               toImageButtonOptions: {
                                 format: 'svg',
                                 filename: `${geneTableData.gene}_heatmap`,
-                                height: 250,
+                                height: 300,
                                 width: 900,
                                 scale: 1
                               }
                             }}
-                            style={{ width: "900px", height: "250px" }}
+                            style={{ width: "900px", height: "300px" }}
                           />
                         )}
                       </div>
