@@ -30,7 +30,7 @@ function findCol(obj, aliases) {
   return null;
 }
 
-export default function VolcanoPlot({dataUrl}) {
+export default function VolcanoPlot({dataUrl, width, height}) {
   const [rows, setRows] = useState([]);
   const [geneQuery, setGeneQuery] = useState("");
   const [pCut, setPCut] = useState(0.05);
@@ -190,31 +190,34 @@ export default function VolcanoPlot({dataUrl}) {
 
   const infoCard = targetRows[0];
 
+  const plotWidth = width || (typeof window !== 'undefined' ? Math.min(window.innerWidth * 0.7, 900) : 900);
+  const plotHeight = height || (typeof window !== 'undefined' ? Math.min(window.innerHeight * 0.5, 600) : 600);
+
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: 16 }}>
+    <div style={{ maxWidth: 1000, margin: "0 auto", padding: 16 }}>
       <h2 style={{ marginBottom: 12 }}>Volcano Plot Analysis</h2>
 
       <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 12, alignItems: "end" }}>
         <div>
-          <label>Search gene</label><br />
+          <label style={{ fontSize: '16px', fontWeight: 'bold' }}>Search gene</label><br />
           <input
             placeholder="e.g., PARP11"
             value={geneQuery}
             onChange={e => setGeneQuery(e.target.value)}
-            style={{ width: "100%" }}
+            style={{ width: "100%", fontSize: '14px', padding: '6px' }}
           />
         </div>
         <div>
-          <label>p-value threshold</label><br />
-          <input type="number" step="0.0001" value={pCut} onChange={e => setPCut(Number(e.target.value) || 0.05)} />
+          <label style={{ fontSize: '16px', fontWeight: 'bold' }}>p-value threshold</label><br />
+          <input type="number" step="0.0001" value={pCut} onChange={e => setPCut(Number(e.target.value) || 0.05)} style={{ fontSize: '14px', padding: '6px' }} />
         </div>
         <div>
-          <label>|log2FC| threshold</label><br />
-          <input type="number" step="0.1" value={fcCut} onChange={e => setFcCut(Number(e.target.value) || 1)} />
+          <label style={{ fontSize: '16px', fontWeight: 'bold' }}>|log2FC| threshold</label><br />
+          <input type="number" step="0.1" value={fcCut} onChange={e => setFcCut(Number(e.target.value) || 1)} style={{ fontSize: '14px', padding: '6px' }} />
         </div>
         <div>
-          <label>Top N labels</label><br />
-          <input type="number" min="0" step="1" value={topN} onChange={e => setTopN(Math.max(0, Number(e.target.value) || 0))} />
+          <label style={{ fontSize: '16px', fontWeight: 'bold' }}>Top N labels</label><br />
+          <input type="number" min="0" step="1" value={topN} onChange={e => setTopN(Math.max(0, Number(e.target.value) || 0))} style={{ fontSize: '14px', padding: '6px' }} />
         </div>
       </div>
 
@@ -272,32 +275,49 @@ export default function VolcanoPlot({dataUrl}) {
       </div>
 
       <div style={{ marginTop: 14, display: "flex", justifyContent: "center" }}>
-        <Plot
-          data={traces}
-          layout={{
-            title: "TCGA Glioma vs GTEx Brain Cortex",
-            xaxis: { title: "log2 Fold Change", zeroline: false },
-            yaxis: { title: "-log10(p-value)", rangemode: "tozero" },
-            shapes,
-            annotations,
-            legend: { 
-              orientation: "h", 
-              x: 0.5, 
-              y: -0.15, 
-              xanchor: 'center' 
-            },
-            margin: { l: 50, r: 20, t: 40, b: 50 },
-            width: 600,
-            height: 450
-          }}
-          config={{
-            responsive: true,
-            displaylogo: false,
-            modeBarButtonsToAdd: ["toImage"],
-            toImageButtonOptions: { format: "svg", filename: "VolcanoPlot", height: 600, width: 800, scale: 1 }
-          }}
-          style={{ width: "600px", height: "450px" }}
-        />
+        <div style={{ width: "80%", maxWidth: "800px" }}>
+          <Plot
+            data={traces}
+            layout={{
+              title: "",
+              xaxis: { 
+                title: {
+                  text: "log2 Fold Change",
+                  font: { size: 14 }
+                },
+                tickfont: { size: 12 },
+                zeroline: false 
+              },
+              yaxis: { 
+                title: {
+                  text: "-log10(p-value)",
+                  font: { size: 14 }
+                },
+                tickfont: { size: 12 },
+                rangemode: "tozero" 
+              },
+              shapes,
+              annotations,
+              legend: { 
+                orientation: "h", 
+                x: 0.5, 
+                y: -0.25, 
+                xanchor: 'center',
+                font: { size: 11 }
+              },
+              margin: { l: 70, r: 40, t: 40, b: 120 },
+              autosize: true
+            }}
+            config={{
+              responsive: true,
+              displaylogo: false,
+              modeBarButtonsToAdd: ["toImage"],
+              toImageButtonOptions: { format: "svg", filename: "VolcanoPlot", scale: 1 }
+            }}
+            style={{ width: "100%", height: `${plotHeight}px` }}
+            useResizeHandler={true}
+          />
+        </div>
       </div>
 
       <div style={{ marginTop: 16, display: "flex", justifyContent: "center" }}>

@@ -21,13 +21,24 @@ const MouseSnRNASeq=()=>{
     },[location.pathname])
 
     return (
-
         <div>
             {shouldRenderOtherComponents && (
-                <div style={{minHeight:670}}>
-                    <iframe src="https://zehuidu.shinyapps.io/shinyapp/" width="400%" height="670" frameBorder="0"></iframe>
+                <div style={{
+                    width: '100%',
+                    overflow: 'auto'
+                }}>
+                    <iframe 
+                        src="https://zehuidu.shinyapps.io/shinyapp/" 
+                        width="100%" 
+                        height="800" 
+                        frameBorder="0"
+                        style={{ 
+                            border: 'none',
+                            minWidth: '1400px'
+                        }}
+                    ></iframe>
                 </div>
-                )}
+            )}
         </div>
     );
 }

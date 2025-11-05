@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export default function TestPage() {
   const [geneTableData, setGeneTableData] = useState(null);
-  const [geneQuery, setGeneQuery] = useState("PARP11");
+  const [geneQuery, setGeneQuery] = useState("");
   const [excelData, setExcelData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [allData, setAllData] = useState({
@@ -170,10 +170,9 @@ export default function TestPage() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1>Cross-Species Comparison</h1>
+    <div style={{ padding: '20px', width: '100%' }}>
+      <h2 style={{ fontSize: '22px' }}>Cross-Species Comparison</h2>
       
-      {/* Search Box */}
       <div style={{ marginBottom: '20px' }}>
         <input
           type="text"
@@ -182,9 +181,9 @@ export default function TestPage() {
           onKeyPress={(e) => e.key === 'Enter' && searchGene()}
           placeholder="Enter gene name (e.g., PARP11 or Parp11)"
           style={{ 
-            padding: '10px', 
-            fontSize: '16px', 
-            width: '300px',
+            padding: '12px', 
+            fontSize: '18px', 
+            width: '400px',
             marginRight: '10px'
           }}
         />
@@ -192,8 +191,8 @@ export default function TestPage() {
           onClick={searchGene} 
           disabled={loading}
           style={{ 
-            padding: '10px 20px', 
-            fontSize: '16px',
+            padding: '12px 24px', 
+            fontSize: '18px',
             cursor: loading ? 'not-allowed' : 'pointer'
           }}
         >
@@ -201,47 +200,48 @@ export default function TestPage() {
         </button>
       </div>
 
-      {/* Error Message */}
       {error && (
         <div style={{ 
-          padding: '10px', 
+          padding: '12px', 
           backgroundColor: '#ffebee', 
           color: '#c62828',
           borderRadius: '4px',
-          marginBottom: '20px'
+          marginBottom: '20px',
+          fontSize: '16px'
         }}>
           {error}
         </div>
       )}
 
-      {/* Results Table */}
       {geneTableData && (
         <div>
-          <h2>Results</h2>
+          <h2 style={{ fontSize: '20px' }}>Results</h2>
           <table style={{ 
             width: '100%', 
             borderCollapse: 'collapse',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            fontSize: '16px',
+            tableLayout: 'fixed'
           }}>
             <thead>
               <tr style={{ backgroundColor: '#f5f5f5' }}>
-                <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'left' }}>Dataset</th>
-                <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'left' }}>Gene</th>
-                <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'right' }}>Log2 FC</th>
-                <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'right' }}>Avg Expression</th>
-                <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'right' }}>P-value</th>
-                <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'right' }}>Q-value</th>
+                <th style={{ border: '1px solid #ddd', padding: '16px', textAlign: 'left', fontSize: '18px', width: '20%' }}>Dataset</th>
+                <th style={{ border: '1px solid #ddd', padding: '16px', textAlign: 'left', fontSize: '18px', width: '15%' }}>Gene</th>
+                <th style={{ border: '1px solid #ddd', padding: '16px', textAlign: 'right', fontSize: '18px', width: '13%' }}>Log2 FC</th>
+                <th style={{ border: '1px solid #ddd', padding: '16px', textAlign: 'right', fontSize: '18px', width: '17%' }}>Avg Expression</th>
+                <th style={{ border: '1px solid #ddd', padding: '16px', textAlign: 'right', fontSize: '18px', width: '17%' }}>P-value</th>
+                <th style={{ border: '1px solid #ddd', padding: '16px', textAlign: 'right', fontSize: '18px', width: '18%' }}>Q-value</th>
               </tr>
             </thead>
             <tbody>
               {geneTableData.map((row, index) => (
                 <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#fff' : '#f9f9f9' }}>
-                  <td style={{ border: '1px solid #ddd', padding: '10px' }}>{row.dataset}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '10px', fontStyle: row.gene === '-' ? 'italic' : 'normal', color: row.gene === '-' ? '#999' : '#000' }}>{row.gene}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '10px', textAlign: 'right', color: row.log2FC === '-' ? '#999' : '#000' }}>{row.log2FC}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '10px', textAlign: 'right', color: row.avgExp === '-' ? '#999' : '#000' }}>{row.avgExp}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '10px', textAlign: 'right', color: row.pValue === '-' ? '#999' : '#000' }}>{row.pValue}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '10px', textAlign: 'right', color: row.qValue === '-' ? '#999' : '#000' }}>{row.qValue}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '14px', fontSize: '16px' }}>{row.dataset}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '14px', fontSize: '16px', fontStyle: row.gene === '-' ? 'italic' : 'normal', color: row.gene === '-' ? '#999' : '#000' }}>{row.gene}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '14px', fontSize: '16px', textAlign: 'right', color: row.log2FC === '-' ? '#999' : '#000' }}>{row.log2FC}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '14px', fontSize: '16px', textAlign: 'right', color: row.avgExp === '-' ? '#999' : '#000' }}>{row.avgExp}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '14px', fontSize: '16px', textAlign: 'right', color: row.pValue === '-' ? '#999' : '#000' }}>{row.pValue}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '14px', fontSize: '16px', textAlign: 'right', color: row.qValue === '-' ? '#999' : '#000' }}>{row.qValue}</td>
                 </tr>
               ))}
             </tbody>

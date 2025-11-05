@@ -20,10 +20,11 @@ const HumanBulkRNASeq=()=>{
     },[location.pathname])
 
     return (
-
         <div>
             {shouldRenderOtherComponents && (
-                <VolcanoPlot dataUrl="deseq2_results_with_plain.csv"/>
+                <VolcanoPlot 
+                    dataUrl="deseq2_results_with_plain.csv"
+                />
             )}
         </div>
     );
