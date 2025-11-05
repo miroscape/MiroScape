@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Papa from 'papaparse';
 
 export default function TestPage() {
   const [geneTableData, setGeneTableData] = useState(null);
@@ -18,40 +17,51 @@ export default function TestPage() {
   // Load all data files
   useEffect(() => {
     const loadData = async () => {
-      const datasets = [
-        { key: 'tcga', url: `${process.env.PUBLIC_URL}/data/TCGA_GBM_vs_Brain.csv` },
-        { key: 'deseq2', url: `${process.env.PUBLIC_URL}/data/deseq2_results_with_plain.csv` },
-        { key: 'mouseSn', url: `${process.env.PUBLIC_URL}/data/mouse_sn_DE.csv` },
-        { key: 'mousePseudobulk', url: `${process.env.PUBLIC_URL}/data/mouse_pseudobulk_de_results.csv` },
-        { key: 'mapping', url: `${process.env.PUBLIC_URL}/data/human_mouse_gene_mapping.csv` }
-      ];
+      setLoading(true);
+      setError(null);
+      try {
+        const [tcga, deseq2, mouseSn, mousePseudobulk, mapping] = await Promise.all([
+          fetch(`${process.env.PUBLIC_URL}/data/TCGA_GBM_vs_Brain.csv`).then(r => r.text()),
+          fetch(`${process.env.PUBLIC_URL}/data/deseq2_results_with_plain.csv`).then(r => r.text()),
+          fetch(`${process.env.PUBLIC_URL}/data/mouse_sn_DE.csv`).then(r => r.text()),
+          fetch(`${process.env.PUBLIC_URL}/data/mouse_pseudobulk_de_results.csv`).then(r => r.text()),
+          fetch(`${process.env.PUBLIC_URL}/data/human_mouse_presence_map.csv`).then(r => r.text())
+        ]);
 
-      const results = {};
-      let loadedCount = 0;
-
-      datasets.forEach(({ key, url }) => {
-        Papa.parse(url, {
-          download: true,
-          header: true,
-          dynamicTyping: false,
-          skipEmptyLines: true,
-          complete: (res) => {
-            results[key] = res.data;
-            loadedCount++;
-            if (loadedCount === datasets.length) {
-              setAllData(results);
-            }
-          },
-          error: (err) => {
-            console.error(`Error loading ${key}:`, err);
-            setError(`Failed to load ${key} data`);
-          }
+        setAllData({
+          tcga: parseCSV(tcga),
+          deseq2: parseCSV(deseq2),
+          mouseSn: parseCSV(mouseSn),
+          mousePseudobulk: parseCSV(mousePseudobulk),
+          mapping: parseCSV(mapping)
         });
-      });
+      } catch (err) {
+        setError('Failed to load data files: ' + err.message);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadData();
   }, []);
+
+  // CSV parser
+  const parseCSV = (csvText) => {
+    const lines = csvText.trim().split('\n');
+    const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+    const data = [];
+    
+    for (let i = 1; i < lines.length; i++) {
+      const values = lines[i].split(',').map(v => v.trim().replace(/^"|"$/g, ''));
+      const row = {};
+      headers.forEach((header, index) => {
+        row[header] = values[index];
+      });
+      data.push(row);
+    }
+    
+    return { headers, data };
+  };
 
   // Search gene data
   const searchGene = () => {
