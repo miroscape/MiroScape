@@ -3,12 +3,12 @@ import Home from "./Home";
 import MiroScripts from "./components/MiroScripts";
 import MitoSurf from "./components/MitoSurf";
 import MiroProteome from "./components/MiroProteome";
-import MiroScriptsHome from "./components/MicroScripts/MiroScriptsHome";
-import CrossSpeciesAnalysis from "./components/MicroScripts/CrossSpeciesAnalysis";
-import DataSource from "./components/MicroScripts/DataSource";
-import HumanBulkRNASeq from "./components/MicroScripts/HumanBulkRNASeq";
-import MouseSnRNASeq from "./components/MicroScripts/MouseSnRNASeq";
-import PopulationAnalysis from "./components/MicroScripts/PopulationAnalysis";
+import MiroScriptsHome from "./components/MiroScripts/MiroScriptsHome";
+import CrossSpeciesAnalysis from "./components/MiroScripts/CrossSpeciesAnalysis";
+import DataSource from "./components/MiroScripts/DataSource";
+import HumanBulkRNASeq from "./components/MiroScripts/HumanBulkRNASeq";
+import MouseSnRNASeq from "./components/MiroScripts/MouseSnRNASeq";
+import PopulationAnalysis from "./components/MiroScripts/PopulationAnalysis";
 import Introduction from "./components/Introduction";
 import FA from "./components/MiroProteome/FA";
 

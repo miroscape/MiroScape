@@ -24,27 +24,22 @@ const MiroScriptsHome=()=>{
             {shouldRenderOtherComponents && (
                 <>
                     <Row>
-                        <Col span={4}>
-                            <Image style={{ padding: '12px 36px'}}
+                        <Col span={5}>
+                            <Image style={{ padding: '10px 0px 10px 20px'}}
                                 src={require('../../assets/logo-chem1.png')}
                             />
                         </Col>
-                        <Col span={20}>
-                            <Content style={{  fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Arial'}}>
+                        <Col span={19}>
+                            <Content style={{  fontWeight: 'bold',padding: '12px 24px',fontSize:'24px',fontFamily:'Arial'}}>
                                 Welcome to MiroScripts!
                             </Content>
-                            <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>
+                            <Content style={{ padding: '0 24px',fontSize:'18px',fontFamily:'Arial'}}>
                                 This interactive platform presents integrated transcriptomic analyses of glioma, combining TCGA bulk RNA-seq, MR3-treated mouse snRNA-seq, and ex vivo treated human tumor samples. Users can interactively explore cell-type patterns, compare across species, and download key gene expression results. The platform enables investigation of conserved transcriptional pathways associated with mitochondrial regulator Miro1 perturbation.
                             </Content>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col span={24}>
-                            <Content style={{ fontWeight: 'bold',padding: '12px 36px',fontSize:'20px',fontFamily:'Arial'}}>
-
+                            <Content style={{ fontWeight: 'bold',padding: '24px 24px 6px 24px',fontSize:'18px',fontFamily:'Arial'}}>
                                 If using MiroScape or the data provided, please cite:
                             </Content>
-                            <Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>
+                            <Content style={{ padding: '0 24px',fontSize:'18px',fontFamily:'Arial'}}>
                                 Du, Z.*; Li, M.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K.B.; Kim, L.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
                             </Content>
                         </Col>
