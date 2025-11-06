@@ -28,7 +28,7 @@ const MouseSnRNASeq=()=>{
                     overflow: 'auto'
                 }}>
                     <iframe 
-                        src="https://zehuidu.shinyapps.io/shinyapp/" 
+                        src="https://xwanglab.shinyapps.io/shinyapp/" 
                         width="100%" 
                         height="800" 
                         frameBorder="0"
