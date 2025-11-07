@@ -31,7 +31,7 @@ const Home = () => {
                     selectedKeys={[page]}
                     theme="dark"
                     mode="horizontal"
-                    // defaultSelectedKeys={['MicroScripts']}
+                    // defaultSelectedKeys={['MiroScripts']}
                     items={items}
                     style={{ flex: 1, minWidth: 0 }}
                 />

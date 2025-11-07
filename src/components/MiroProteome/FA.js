@@ -7,7 +7,7 @@ import {Content} from "antd/es/layout/layout";
 
 export default function FA() {
   const [geneTableData, setGeneTableData] = useState(null);
-  const [geneQuery, setGeneQuery] = useState("MYH7");
+  const [geneQuery, setGeneQuery] = useState("");
   const [excelData, setExcelData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [shouldRenderOtherComponents,setShouldRenderOtherComponents]=useState(false)
@@ -35,27 +35,23 @@ export default function FA() {
     setShouldRenderOtherComponents(location.pathname === '/miroProteome/FA')
   }, [location.pathname]);
 
-  // 处理基因数据的函数，等价于R的make_gene_table_one
   const makeGeneTableOne = (gene, digits = 3) => {
     if (!excelData || excelData.length === 0) return null;
 
     const headers = excelData[0];
     const dataRows = excelData.slice(1);
 
-    // 找基因列
     let geneColIndex = headers.findIndex(h => 
       typeof h === 'string' && h.toLowerCase().includes('gene')
     );
-    if (geneColIndex === -1) geneColIndex = 1; // 默认第二列
+    if (geneColIndex === -1) geneColIndex = 1;
 
-    // 找到对应基因的行
     const geneRow = dataRows.find(row => row[geneColIndex] === gene);
     if (!geneRow) {
       console.log(`Gene not found: ${gene}`);
       return null;
     }
 
-    // 辅助函数：按正则表达式找列并获取值
     const getOne = (pattern) => {
       const regex = new RegExp(pattern, 'i');
       const colIndex = headers.findIndex(h => typeof h === 'string' && regex.test(h));
@@ -64,7 +60,6 @@ export default function FA() {
       return isNaN(value) ? null : value;
     };
 
-    // 提取各列数据
     const cm_fa_dmso = getOne("Cardiomyocyte\\s*FA.*DMSO");
     const cm_fa_mr3 = getOne("Cardiomyocyte\\s*FA.*MR3");
     const cm_iso_dmso = getOne("Cardiomyocyte\\s*Iso\\s*Ctrl.*DMSO|Cardiomyocyte\\s*IsoCtrl.*DMSO");
@@ -78,7 +73,6 @@ export default function FA() {
     const fib_fa = getOne("^Fibroblast\\s*FA");
     const fib_hc = getOne("^Fibroblast\\s*Healthy|^Fibroblast\\s*HC");
 
-    // 格式化数值
     const formatValue = (val) => {
       if (val === null || val === undefined) return null;
       return Math.round(val * Math.pow(10, digits)) / Math.pow(10, digits);
@@ -104,18 +98,16 @@ export default function FA() {
           cardiomyocytes_iso: formatValue(cm_iso_mr3),
           sensory_neurons_fa: formatValue(sn_fa_mr3),
           sensory_neurons_iso: formatValue(sn_iso_mr3),
-          fibroblasts_fa: null, // MR3行为NA
-          fibroblasts_hc: null  // MR3行为NA
+          fibroblasts_fa: null, 
+          fibroblasts_hc: null
         }
       ]
     };
   };
 
-  // 生成热力图数据
   const generateHeatmapData = (geneData) => {
     if (!geneData) return null;
 
-    // X轴：细胞类型
     const xLabels = [
       "Cardiomyocytes FA",
       "Cardiomyocytes Iso Ctrl", 
@@ -127,9 +119,7 @@ export default function FA() {
 
     const yLabels = ["MR3_+", "MR3_-"];
 
-    // Z值矩阵 (2行6列)
     const zValues = [
-      // MR3行
       [
         geneData.data[1].cardiomyocytes_fa,
         geneData.data[1].cardiomyocytes_iso,
@@ -138,7 +128,6 @@ export default function FA() {
         geneData.data[1].fibroblasts_fa,
         geneData.data[1].fibroblasts_hc
       ],
-      // DMSO行
       [
         geneData.data[0].cardiomyocytes_fa,
         geneData.data[0].cardiomyocytes_iso,
@@ -155,21 +144,21 @@ export default function FA() {
       z: zValues,
       type: 'heatmap',
       colorscale: [
-        [0, '#f8f9fa'],      // 最小值：浅灰/白色
-        [0.1, '#e3f2fd'],    // 接近0：浅蓝
-        [0.5, '#2196f3'],    // 中等值：蓝色
-        [1, '#0d47a1']       // 最大值：深蓝
+        [0, '#f8f9fa'],
+        [0.1, '#e3f2fd'],
+        [0.5, '#2196f3'],
+        [1, '#0d47a1']
       ],
       showscale: true,
       colorbar: {
         title: "Expression Level",
         titleside: "right",
-        thickness: 25,        // 从15增加到25，让bar更宽
-        len: 0.9,            // 从0.7增加到0.9，让bar更长
-        x: 1.02,             // 调整bar的水平位置
-        y: 0.5,              // 垂直居中
-        xanchor: "left",     // 锚点在左侧
-        yanchor: "middle"    // 垂直居中锚点
+        thickness: 25,
+        len: 0.9,
+        x: 1.02,
+        y: 0.5,
+        xanchor: "left",
+        yanchor: "middle"
       },
       hoverongaps: false,
       hovertemplate: 
@@ -180,7 +169,6 @@ export default function FA() {
     };
   };
 
-  // 处理基因查询
   const handleGeneSearch = () => {
     const result = makeGeneTableOne(geneQuery);
     setGeneTableData(result);
@@ -189,88 +177,90 @@ export default function FA() {
   const heatmapTrace = geneTableData ? generateHeatmapData(geneTableData) : null;
 
   return (
-
       <div>
         {shouldRenderOtherComponents && (
             <>
               <Row>
-                <Col span={4}>
-                  <Image style={{ padding: '12px 36px'}}
-                         src={require('../../assets/labicon.jpg')}
+                <Col span={5}>
+                  <Image style={{ padding: '10px 10px 0px 30px'}}
+                         src={require('../../assets/logo-chem1.png')}
                   />
                 </Col>
-                <Col span={20}>
-                  <Content style={{  fontWeight: 'bold',padding: '12px 36px',fontSize:'24px',fontFamily:'Arial'}}>
-                    This dataset contains proteomic data from fibroblasts, sensory neurons, and cardiomyocytes derived from Friedreich’s Ataxia (FA) patients and controls, with and without MR3 treatment. Chandra et al. 2025 (DOI TBD).
+                <Col span={19}>
+                  <Content style={{ fontWeight: 'bold', padding: '12px 24px', fontSize: '24px', fontFamily: 'Arial' }}>
+                    Welcome to MiroProteome-FA!
                   </Content>
-                  {/*<Content style={{ padding: '0 36px',fontSize:'16px',fontFamily:'Arial'}}>*/}
-                  {/*  This interactive platform presents integrated transcriptomic analyses of glioma, combining TCGA bulk RNA-seq, MR3-treated mouse snRNA-seq, and ex vivo treated human tumor samples. Users can interactively explore cell-type patterns, compare across species, and download key gene expression results. The platform enables investigation of conserved transcriptional pathways associated with mitochondrial regulator Miro1 perturbation.*/}
-                  {/*</Content>*/}
+                  <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
+                    This dataset contains proteomic data from fibroblasts, sensory neurons, and cardiomyocytes derived from Friedreich's Ataxia (FA) patients and controls, with and without MR3 treatment. Chandra et al. 2025 (DOI TBD).
+                  </Content>
+                  <Content style={{ fontWeight: 'bold', padding: '12px 24px 6px 24px', fontSize: '20px', fontFamily: 'Arial' }}>
+                    If using MiroScape or the data provided, please cite:
+                  </Content>
+                  <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
+                    Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.H.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
+                  </Content>
                 </Col>
               </Row>
-              <div style={{ maxWidth: 1200, margin: "0 auto", padding: 20 }}>
-                <h1>Search Your Protein in Our Data!</h1>
+              <div style={{ maxWidth: 1200, margin: "0", padding: "0px 20px 20px 20px" }}>
+                <h2 style={{ fontSize: '22px' }}>Search Your Protein in Our Data!</h2>
 
-                {/* 基因查询输入 */}
                 <div style={{ marginBottom: 20 }}>
-                  <label>Gene Name: </label>
+                  <label style={{ fontSize: '16px' }}>Gene Name: </label>
                   <input
                     value={geneQuery}
                     onChange={(e) => setGeneQuery(e.target.value)}
                     placeholder="Enter gene name (e.g., MYH7)"
-                    style={{ marginRight: 10, padding: 5, width: 200 }}
+                    style={{ marginRight: 10, padding: '8px', width: 250, fontSize: '16px' }}
                   />
                   <button
                     onClick={handleGeneSearch}
                     disabled={loading}
-                    style={{ padding: 5, backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: 3 }}
+                    style={{ padding: '5px 16px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: 3, fontSize: '16px' }}
                   >
                     {loading ? 'Loading...' : 'Search Gene'}
                   </button>
                 </div>
 
-                {/* 数据表格 */}
                 {geneTableData && (
                   <div>
-                    <h4>Protein Log2(LFQ Intensity) for {geneTableData.gene}</h4>
+                    <h4 style={{ fontSize: '16px', marginBottom: '10px' }}>Protein Log2(LFQ Intensity) for {geneTableData.gene}</h4>
 
-                    {/* 数值表格 */}
-                    <div style={{ marginBottom: 30 }}>
-                      <h5>Data Table</h5>
-                      <table style={{ borderCollapse: "collapse", fontSize: 14, marginBottom: 20 }}>
+                    <div style={{ marginBottom: 20 }}>
+                      <h5 style={{ fontSize: '16px',marginBottom: '20px' }}>Data Table</h5>
+                      <table style={{ borderCollapse: "collapse", fontSize: 16, marginBottom: 20 }}>
                         <thead>
                           <tr style={{ backgroundColor: "#f5f5f5" }}>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>MR3</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Cardiomyocytes FA</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Cardiomyocytes Iso Ctrl</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Sensory Neurons FA</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Sensory Neurons Iso Ctrl</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Fibroblasts FA</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>Fibroblasts HC</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>MR3</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Cardiomyocytes FA</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Cardiomyocytes Iso Ctrl</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Sensory Neurons FA</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Sensory Neurons Iso Ctrl</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Fibroblasts FA</th>
+                            <th style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>Fibroblasts HC</th>
                           </tr>
                         </thead>
                         <tbody>
                           {geneTableData.data.map((row, index) => (
                             <tr key={index}>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center", fontWeight: "bold" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontWeight: "bold", fontSize: '16px' }}>
                                 {row.mr3}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.cardiomyocytes_fa !== null ? row.cardiomyocytes_fa : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.cardiomyocytes_iso !== null ? row.cardiomyocytes_iso : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.sensory_neurons_fa !== null ? row.sensory_neurons_fa : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.sensory_neurons_iso !== null ? row.sensory_neurons_iso : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.fibroblasts_fa !== null ? row.fibroblasts_fa : '-'}
                               </td>
-                              <td style={{ border: "1px solid #ddd", padding: "8px", textAlign: "center" }}>
+                              <td style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center", fontSize: '16px' }}>
                                 {row.fibroblasts_hc !== null ? row.fibroblasts_hc : '-'}
                               </td>
                             </tr>
@@ -279,9 +269,8 @@ export default function FA() {
                       </table>
                     </div>
 
-                    {/* Plotly热力图 */}
                     <div style={{ marginTop: 30 }}>
-                      <h5>Heatmap Visualization</h5>
+                      <h5 style={{ fontSize: '16px', marginBottom: '10px' }}>Heatmap Visualization</h5>
                       <div style={{ display: "flex", justifyContent: "center" }}>
                         {heatmapTrace && (
                           <Plot
@@ -295,11 +284,11 @@ export default function FA() {
                               },
                               yaxis: {
                                 title: "Treatment",
-                                autorange: "reversed" // 让DMSO在下面
+                                autorange: "reversed"
                               },
                               width: 900,
-                              height: 250,
-                              margin: { l: 80, r: 120, t: 60, b: 120 } // 右边距从120增加到150，为更宽的bar留空间
+                              height: 300,
+                              margin: { l: 80, r: 120, t: 60, b: 150 }
                             }}
                             config={{
                               displaylogo: false,
@@ -311,12 +300,12 @@ export default function FA() {
                               toImageButtonOptions: {
                                 format: 'svg',
                                 filename: `${geneTableData.gene}_heatmap`,
-                                height: 250,
+                                height: 300,
                                 width: 900,
                                 scale: 1
                               }
                             }}
-                            style={{ width: "900px", height: "250px" }}
+                            style={{ width: "900px", height: "300px" }}
                           />
                         )}
                       </div>
