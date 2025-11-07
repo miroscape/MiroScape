@@ -34,13 +34,13 @@ const MiroScriptsHome=()=>{
                                 Welcome to MiroScripts!
                             </Content>
                             <Content style={{ padding: '0 24px',fontSize:'18px',fontFamily:'Arial'}}>
-                                This interactive platform presents integrated transcriptomic analyses of glioma, combining TCGA bulk RNA-seq, MR3-treated mouse snRNA-seq, and ex vivo treated human tumor samples. Users can interactively explore cell-type patterns, compare across species, and download key gene expression results. The platform enables investigation of conserved transcriptional pathways associated with mitochondrial regulator Miro1 perturbation.
+                                This interactive platform presents integrated transcriptomic analyses of glioma, combining TCGA bulk RNA-seq, MR3-treated mouse in vivo snRNA-seq, and MR3-treated human tumor resections ex vivo bulk RNA-seq. Users can interactively explore cell-type patterns, compare across species, and download key gene expression results. The platform enables investigation of conserved or unique transcriptional pathways mediated by MIRO1.
                             </Content>
                             <Content style={{ fontWeight: 'bold',padding: '24px 24px 6px 24px',fontSize:'18px',fontFamily:'Arial'}}>
                                 If using MiroScape or the data provided, please cite:
                             </Content>
                             <Content style={{ padding: '0 24px',fontSize:'18px',fontFamily:'Arial'}}>
-                                Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.H.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
+                                Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma.
                             </Content>
                         </Col>
                     </Row>
