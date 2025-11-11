@@ -43,6 +43,9 @@ const Introduction=()=>{
                                     <Image style={{ padding: '0px 12px'}}
                                            src={require('../assets/logo-chem1.png')}
                                     />
+                                    <Image style={{ padding: '0px 12px'}}
+                                           src={require('../assets/Stanford_Logo.png')}
+                                    />
                                 </Col>
                                 <Col span={20}>
                                     <Content style={{ fontWeight: 'bold',padding: '12px 36px 6px 36px',fontSize:'20px',fontFamily:'Arial'}}>
