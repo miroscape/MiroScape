@@ -41,7 +41,7 @@ const MiroScripts=()=>{
                         <Layout
                             style={{ padding: '24px 0', background: colorBgContainer, borderRadius: borderRadiusLG }}
                         >
-                            <Sider style={{ background: colorBgContainer }} width={200}>
+                            <Sider style={{ background: colorBgContainer }} width={250}>
                                 <Menu
                                     onClick={onClick}
                                     selectedKeys={[page]}

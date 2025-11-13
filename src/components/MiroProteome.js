@@ -4,15 +4,25 @@ import {useEffect, useState} from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import TestPage from "./MiroProteome/FA";
 import Sider from "antd/es/layout/Sider";
-import {RiBrainLine, RiDatabaseLine, RiEarthLine, RiHome5Line, RiMickeyLine, RiTeamLine} from "@remixicon/react";
+import {
+    RiHome5Line,
+    RiDnaLine,
+    RiScissorsLine,
+    RiMickeyLine,
+    RiMicroscopeLine
+} from "@remixicon/react";
 const { Header, Content } = Layout;
 
-const items = [{icon:React.createElement(RiHome5Line),key: 'FA', label: 'FA'}];
+const items = [{icon:React.createElement(RiHome5Line),key: 'home', label: 'Home'},
+    {icon:React.createElement(RiDnaLine),key: 'FA', label: 'FA'},
+    {icon:React.createElement(RiMickeyLine),key: 'gliomaMice', label: 'Glioma Mice'},
+    {icon:React.createElement(RiMicroscopeLine),key: 'gliomaAndPDCells', label: 'Glioma and PD Cells'},
+    {icon:React.createElement(RiScissorsLine),key: 'MIRO1KD', label: 'MIRO1 KD'},];
 const MiroProteome=()=>{
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
-    const [page,setPage]=useState('FA');
+    const [page,setPage]=useState('home');
     const navigate = useNavigate();
     const onClick=(data)=>{
         console.log('click ', data);
@@ -35,7 +45,7 @@ const MiroProteome=()=>{
                         <Layout
                             style={{ padding: '24px 0', background: colorBgContainer, borderRadius: borderRadiusLG }}
                         >
-                            <Sider style={{ background: colorBgContainer }} width={200}>
+                            <Sider style={{ background: colorBgContainer }} width={250}>
                                 <Menu
                                     onClick={onClick}
                                     selectedKeys={[page]}

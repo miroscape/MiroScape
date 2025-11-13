@@ -11,6 +11,10 @@ import MouseSnRNASeq from "./components/MiroScripts/MouseSnRNASeq";
 import PopulationAnalysis from "./components/MiroScripts/PopulationAnalysis";
 import Introduction from "./components/Introduction";
 import FA from "./components/MiroProteome/FA";
+import MiroProteomeHome from "./components/MiroProteome/MiroProteomeHome";
+import GliomaMice from "./components/MiroProteome/GliomaMice";
+import MIRO1KD from "./components/MiroProteome/MIRO1KD";
+import GliomaAndPDCells from "./components/MiroProteome/GliomaAndPDCells";
 
 const BasicRoute = () => {
 
@@ -67,11 +71,27 @@ const BasicRoute = () => {
                     children: [
                         {
                             index: true,
-                            element: <Navigate to="/miroProteome/FA" replace />,
+                            element: <Navigate to="/miroProteome/home" replace />,
+                        },
+                        {
+                            path:'/miroProteome/home',
+                            element: <MiroProteomeHome/>,
                         },
                         {
                             path:'/miroProteome/FA',
                             element: <FA/>,
+                        },
+                        {
+                            path:'/miroProteome/gliomaMice',
+                            element: <GliomaMice/>,
+                        },
+                        {
+                            path:'/miroProteome/gliomaAndPDCells',
+                            element: <GliomaAndPDCells/>,
+                        },
+                        {
+                            path:'/miroProteome/MIRO1KD',
+                            element: <MIRO1KD/>,
                         }
                     ]
                 },
