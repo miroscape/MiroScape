@@ -29,12 +29,13 @@ const MouseSnRNASeq=()=>{
                 }}>
                     <iframe 
                         src="https://xwanglab.shinyapps.io/shinyapp/" 
-                        width="100%" 
+                        width="100%"
                         height="800" 
                         frameBorder="0"
                         style={{ 
                             border: 'none',
-                            minWidth: '1400px'
+                            minWidth: '1200px',
+                            // maxWidth: '1400px'
                         }}
                     ></iframe>
                 </div>

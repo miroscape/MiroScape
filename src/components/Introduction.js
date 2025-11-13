@@ -1,4 +1,3 @@
-
 import {Col, Image, Layout, Row, theme} from "antd";
 import React, {useEffect, useState} from "react";
 import {Outlet, useLocation} from "react-router-dom";
@@ -34,7 +33,7 @@ const Introduction=()=>{
                                         Welcome to MiroScape!
                                     </Content>
                                     <Content style={{ padding: '0 36px',fontSize:'18px',fontFamily:'Arial'}}>
-                                        This platform brings together three different levels of datasets on Miro1, a key outer mitochondrial membrane protein involved in regulating mitochondrial transport, dynamics and signaling. MiroScripts explores transcriptomic changes, MitoSurf profiles the mitochondrial surface proteome, and MiroProteome captures whole-cell proteomic responses under pharmacological intervention or Miro1 modulation. Together, our platform provides a multi-layered view of how Miro1 shapes cellular and mitochondrial landscapes.
+                                        This platform brings together three different levels of datasets on MIRO1, a key outer mitochondrial membrane protein involved in regulating mitochondrial transport, dynamics, and signaling. MiroScripts explores transcriptomic changes, MitoSurf profiles the mitochondrial surface proteome, and MiroProteome captures whole-cell proteomic responses under pharmacological intervention or MIRO1 modulation. Together, our platform provides a multi-layered view of how MIRO1 shapes cellular and mitochondrial landscapes.
                                     </Content>
                                 </Col>
                             </Row>
@@ -43,13 +42,21 @@ const Introduction=()=>{
                                     <Image style={{ padding: '0px 12px'}}
                                            src={require('../assets/logo-chem1.png')}
                                     />
+                                    <Image style={{ padding: '0px 12px'}}
+                                           src={require('../assets/Stanford_Logo.png')}
+                                    />
                                 </Col>
                                 <Col span={20}>
                                     <Content style={{ fontWeight: 'bold',padding: '12px 36px 6px 36px',fontSize:'20px',fontFamily:'Arial'}}>
                                         If using MiroScape or the data provided, please cite:
                                     </Content>
-                                    <Content style={{ padding: '0 36px',fontSize:'18px',fontFamily:'Arial'}}>
-                                        Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.H.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. (Under review. Will update the link later.)
+                                    <Content style={{ padding: '0 36px', fontSize: '18px', fontFamily: 'Arial' }}>
+                                        Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. 
+                                        Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. 
+                                        <i> bioRxiv </i> (2025). {' '}
+                                        <a href="https://www.biorxiv.org/content/10.1101/2025.11.10.686781v1" target="_blank" rel="noopener noreferrer">
+                                        https://www.biorxiv.org/content/10.1101/2025.11.10.686781v1
+                                        </a>
                                     </Content>
                                     <Content style={{ fontWeight: 'bold',padding: '18px 36px 6px 36px',fontSize:'20px',fontFamily:'Arial'}}>
                                         Contact:
