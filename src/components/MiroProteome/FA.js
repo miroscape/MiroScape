@@ -181,29 +181,33 @@ export default function FA() {
         {shouldRenderOtherComponents && (
             <>
               <Row>
-                <Col span={5}>
+                {/* <Col span={5}>
                   <Image style={{ padding: '10px 10px 0px 30px'}}
                          src={require('../../assets/logo-chem1.png')}
                   />
-                </Col>
-                <Col span={19}>
+                </Col> */}
+                <Col span={24}>
                   <Content style={{ fontWeight: 'bold', padding: '12px 24px', fontSize: '24px', fontFamily: 'Arial' }}>
                     Welcome to MiroProteome-FA!
                   </Content>
                   <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
-                    This dataset contains proteomic data from fibroblasts, sensory neurons, and cardiomyocytes derived from Friedreich's Ataxia (FA) patients and controls, with and without MR3 treatment. Chandra et al. 2025 (DOI TBD).
+                    This dataset contains proteomic data from fibroblasts, sensory neurons, and cardiomyocytes derived from Friedreich's Ataxia (FA) patients and controls, with and without MR3 treatment.
                   </Content>
-                  <Content style={{ fontWeight: 'bold', padding: '12px 24px 6px 24px', fontSize: '20px', fontFamily: 'Arial' }}>
-                    If using MiroScape or the data provided, please cite:
+                  <Content style={{ fontWeight: 'bold', padding: '12px 24px 6px 24px', fontSize: '18px', fontFamily: 'Arial' }}>
+                    If using MiroProteome-FA or the data provided, please cite:
                   </Content>
                   <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
+                    Chandra, S.; Kwak, C.S.; Du, Z.; Barisano, G.; Nguyen, K.T.; Vinogradov, V.; Wang, X.(2025). 
+                    Chemical Modulation of MIRO1 Alleviates Cell-Type-Specific Vulnerabilities in Friedreich's Ataxia.
+                  </Content>
+                  {/* <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
                     Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. 
                     Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. 
                     <i> bioRxiv </i> (2025). {' '}
                     <a href="https://www.biorxiv.org/content/10.1101/2025.11.10.686781v1" target="_blank" rel="noopener noreferrer">
                     https://www.biorxiv.org/content/10.1101/2025.11.10.686781v1
                     </a>
-                  </Content>
+                  </Content> */}
                 </Col>
               </Row>
               <div style={{ maxWidth: 1200, margin: "0", padding: "0px 20px 20px 20px" }}>
