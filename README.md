@@ -15,7 +15,7 @@ Together, they provide a multi-layered view of how Miro1 shapes cellular and mit
 
 If using **MiroScape** or the data provided, please cite:
 
-Du, Z./*; Li, M-H./*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. (2025) Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. *bioRxiv* 2025.11.10.686781; doi: https://doi.org/10.1101/2025.11.10.686781
+Du, Z.\*; Li, M-H.\*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. (2025) Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. *bioRxiv* 2025.11.10.686781; doi: https://doi.org/10.1101/2025.11.10.686781
 
 ### Contact
 
