@@ -72,11 +72,9 @@ export default function MitoSurf() {
       return geneRow[colIndex] || null;
     };
 
-    // Get protein information
     const subMitoLoc = getColumnText("localization from Mitocarta3.0 database");
     const cellularLoc = getColumnText("cellular localization from native org. IP database");
 
-    // Get expression values for all conditions
     const gbm_egfp = getColumnValue("GBM-EGFP log2 Avg MS intensity");
     const gbm_egfp_mr3 = getColumnValue("GBM-EGFP-MR3 log2 Avg MS intensity");
     const gbm_omm = getColumnValue("GBM-OMM log2 Avg MS intensity");
@@ -175,7 +173,6 @@ export default function MitoSurf() {
       geneData.data.in_a53t_snca_omm
     ]];
 
-    // 找出所有非 null 值的最大值
     const allValues = zValues.flat().filter(v => v !== null);
     const maxValue = Math.max(...allValues);
 
@@ -184,8 +181,8 @@ export default function MitoSurf() {
       y: ["Expression"],
       z: zValues,
       type: 'heatmap',
-      zmin: 0,  // 色标从 0 开始
-      zmax: maxValue,  // 色标到最大值
+      zmin: 0,
+      zmax: maxValue,
       colorscale: [
         [0, '#f8f9fa'],
         [0.1, '#e3f2fd'],
@@ -196,8 +193,8 @@ export default function MitoSurf() {
       colorbar: {
         title: "Log2 Average MS Intensity",
         titleside: "right",
-        thickness: 25, // 增加厚度
-        len: 0.9, // 增加长度，避免太扁
+        thickness: 25,
+        len: 0.9,
         x: 1.02,
         y: 0.5,
         xanchor: "left",
