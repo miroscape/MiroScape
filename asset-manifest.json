@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.f855e6bc.css",
-    "main.js": "./static/js/main.e48210a0.js",
+    "main.js": "./static/js/main.d6a6cf6e.js",
     "static/js/453.04cccfb2.chunk.js": "./static/js/453.04cccfb2.chunk.js",
     "static/media/logo-chem1.png": "./static/media/logo-chem1.284e4c95683d319723b5.png",
     "static/media/labicon.jpg": "./static/media/labicon.a99c98ada5d272d85806.jpg",
@@ -9,11 +9,11 @@
     "static/media/Stanford_Logo.png": "./static/media/Stanford_Logo.0b41a2ba3b402fd1b48c.png",
     "index.html": "./index.html",
     "main.f855e6bc.css.map": "./static/css/main.f855e6bc.css.map",
-    "main.e48210a0.js.map": "./static/js/main.e48210a0.js.map",
+    "main.d6a6cf6e.js.map": "./static/js/main.d6a6cf6e.js.map",
     "453.04cccfb2.chunk.js.map": "./static/js/453.04cccfb2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.e48210a0.js"
+    "static/js/main.d6a6cf6e.js"
   ]
 }
