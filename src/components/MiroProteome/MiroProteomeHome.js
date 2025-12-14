@@ -34,7 +34,7 @@ const MiroProteomeHome=()=>{
                                 Welcome to MiroProteome!
                             </Content>
                             <Content style={{ padding: '0 24px',fontSize:'20px',fontFamily:'Arial'}}>
-                                Here we provide whole-cell proteomic data across cell lines and models, with or without modulating MIRO1.
+                                Here we provide whole-cell proteomic data across cell lines and models, with or without modulating MIRO1. Mean MS values are shown and expressed as heat maps. Please refer to the original papers for exact values of each replicates as some replicates have missing values.
                             </Content>
                             <Content style={{ fontWeight: 'bold',padding: '24px 24px 6px 24px',fontSize:'20px',fontFamily:'Arial'}}>
                                 If using MiroScape or the data provided, please cite:

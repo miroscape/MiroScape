@@ -138,11 +138,17 @@ export default function FA() {
       ]
     ];
 
+    // 找出所有非 null 值的最大值
+    const allValues = zValues.flat().filter(v => v !== null);
+    const maxValue = Math.max(...allValues);
+
     return {
       x: xLabels,
       y: yLabels,
       z: zValues,
       type: 'heatmap',
+      zmin: 0,  // 色标从 0 开始
+      zmax: maxValue,  // 色标到最大值
       colorscale: [
         [0, '#f8f9fa'],
         [0.1, '#e3f2fd'],
