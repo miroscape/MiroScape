@@ -213,8 +213,9 @@ export default function GliomaAndPDCells() {
                     If using MiroProteome-Glioma and PD Cells or the data provided, please cite:
                   </Content>
                   <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
-                    Kwak, C.S.; Du, Z.; Creery, J.S.; Zarbock, E.W.; Major, M.B.; Elias, J.E.; Wang, X. (2025).
+                    Chulhwan S. Kwak, Zehui Du, Joseph S. Creery, Emily M. Wilkerson, Michael B. Major, Joshua E. Elias, Xinnan Wang (2025).
                     Optogenetic Proximity Labeling Maps Spatially Resolved Mitochondrial Surface Proteomes and a Locally Regulated Ribosome Pool.
+                    <i> bioRxiv </i>  2025.12.21.693523; doi: <a href="https://www.biorxiv.org/content/10.64898/2025.12.21.693523v1" target="_blank" rel="noopener noreferrer">https://doi.org/10.64898/2025.12.21.693523</a>
                   </Content>
                 </Col>
               </Row>
