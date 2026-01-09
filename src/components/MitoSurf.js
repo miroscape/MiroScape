@@ -9,6 +9,7 @@ export default function MitoSurf() {
   const [geneTableData, setGeneTableData] = useState(null);
   const [geneQuery, setGeneQuery] = useState("");
   const [excelData, setExcelData] = useState(null);
+  const [s2Data, setS2Data] = useState(null);
   const [loading, setLoading] = useState(false);
   const [shouldRenderOtherComponents, setShouldRenderOtherComponents] = useState(false);
   const location = useLocation();
@@ -23,6 +24,14 @@ export default function MitoSurf() {
       const worksheet = workbook.Sheets[sheetName];
       const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
       setExcelData(data);
+
+      const response2 = await fetch(`${process.env.PUBLIC_URL}/data/MitoSurf_Table_S2.xlsx`);
+      const arrayBuffer2 = await response2.arrayBuffer();
+      const workbook2 = XLSX.read(arrayBuffer2);
+      const sheetName2 = workbook2.SheetNames[0];
+      const worksheet2 = workbook2.Sheets[sheetName2];
+      const data2 = XLSX.utils.sheet_to_json(worksheet2, { header: 1 });
+      setS2Data(data2);
     } catch (error) {
       console.error('Error loading Excel file:', error);
     } finally {
@@ -74,6 +83,35 @@ export default function MitoSurf() {
 
     const subMitoLoc = getColumnText("localization from Mitocarta3.0 database");
     const cellularLoc = getColumnText("cellular localization from native org. IP database");
+    
+    // Get HCPS Score from S2 Data
+    let hcpsScore = "N/A";
+    if (s2Data && s2Data.length > 0) {
+      const s2Headers = s2Data[0];
+      const s2Rows = s2Data.slice(1);
+      
+      const getS2ColIndex = (namePattern) => {
+        return s2Headers.findIndex(h => typeof h === 'string' && h.trim() === namePattern);
+      };
+
+      const s2GeneColIndex = getS2ColIndex("PG.Genes.Primary");
+      
+      // Use partial match for the long score column name to be safe, or exact match if preferred. 
+      // User gave exact string: "HCPS score (from 1838 list) If value = blank, it is no score)"
+      const s2ScoreColIndex = s2Headers.findIndex(h => 
+        typeof h === 'string' && h.includes("HCPS score") && h.includes("1838 list")
+      );
+
+      if (s2GeneColIndex !== -1 && s2ScoreColIndex !== -1) {
+        const s2Row = s2Rows.find(row => row[s2GeneColIndex] === gene);
+        if (s2Row) {
+          const score = s2Row[s2ScoreColIndex];
+          if (score !== undefined && score !== null && score !== "") {
+            hcpsScore = score;
+          }
+        }
+      }
+    }
 
     const gbm_egfp = getColumnValue("GBM-EGFP log2 Avg MS intensity");
     const gbm_egfp_mr3 = getColumnValue("GBM-EGFP-MR3 log2 Avg MS intensity");
@@ -103,7 +141,8 @@ export default function MitoSurf() {
       gene: gene,
       proteinInfo: {
         subMitoLoc,
-        cellularLoc
+        cellularLoc,
+        hcpsScore
       },
       data: {
         gbm_egfp: formatValue(gbm_egfp),
@@ -277,8 +316,11 @@ export default function MitoSurf() {
                       <p style={{ fontSize: '16px', marginBottom: '8px' }}>
                         <strong>Sub-Mitochondrial localization (from Mitocarta3.0):</strong> {geneTableData.proteinInfo.subMitoLoc || 'N/A'}
                       </p>
-                      <p style={{ fontSize: '16px', marginBottom: '0' }}>
+                      <p style={{ fontSize: '16px', marginBottom: '8px' }}>
                         <strong>Cellular localization (from native org. IP):</strong> {geneTableData.proteinInfo.cellularLoc || 'N/A'}
+                      </p>
+                      <p style={{ fontSize: '16px', marginBottom: '0' }}>
+                        <strong>HCPS Score:</strong> {geneTableData.proteinInfo.hcpsScore}
                       </p>
                     </div>
 
