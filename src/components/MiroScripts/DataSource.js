@@ -34,6 +34,10 @@ const columns = [
             <Space size="middle">
                 {record.downloadable ? (
                     <a onClick={() => handleDownload(record.filename)}>Download</a>
+                ) : record.externalLink ? (
+                    <a href={record.externalLink} target="_blank" rel="noopener noreferrer">
+                        Download
+                    </a>
                 ) : (
                     <span style={{ color: '#999' }}>Download</span>
                 )}
@@ -69,6 +73,7 @@ const data = [
         name:'',
         age:'Download Raw Data',
         downloadable: false,
+        externalLink: 'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE324505',
         filename: ''
     },
     {
@@ -83,6 +88,7 @@ const data = [
         name:'',
         age:'Download Raw Data',
         downloadable: false,
+        externalLink: 'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE324505',
         filename: ''
     },
 ];
