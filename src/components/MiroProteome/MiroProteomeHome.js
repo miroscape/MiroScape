@@ -40,9 +40,14 @@ const MiroProteomeHome=()=>{
                                 If using MiroScape or the data provided, please cite:
                             </Content>
                             <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
-                                Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. (2025)
-                                Cross-Species Transcriptomic Integration Reveals a Conserved, MIRO1-Mediated Macrophage-to-T Cell Signaling Axis Driving Immunosuppression in Glioma. 
-                                <i> bioRxiv </i>  2025.11.10.686781; doi: <a href="https://www.biorxiv.org/content/10.1101/2025.11.10.686781v1" target="_blank" rel="noopener noreferrer">https://doi.org/10.1101/2025.11.10.686781</a>
+                                Du, Z.*; Li, M.-H.*; Bergsneider, B. H.; Tsai, A. P.; Cho, K. B.; Kim, L. H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. (2026). A MIRO1-mediated immune axis in glioma. <i>Life Science Alliance</i> 9(8): e202603749. doi:{' '}
+                                <a
+                                    href="https://doi.org/10.26508/lsa.202603749"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    https://doi.org/10.26508/lsa.202603749
+                                </a>
                             </Content>
                         </Col>
                     </Row>
