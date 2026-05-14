@@ -40,7 +40,7 @@ const MiroScriptsHome=()=>{
                                 If using MiroScape or the data provided, please cite:
                             </Content>
                             <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
-                                Du, Z.*; Li, M.-H.*; Bergsneider, B. H.; Tsai, A. P.; Cho, K. B.; Kim, L. H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. (2026). A MIRO1-mediated immune axis in glioma. <i>Life Science Alliance</i> 9(8): e202603749. doi:{' '}
+                                Du, Z.*; Li, M.-H.*; Bergsneider, B. H.; Tsai, A. P.; Cho, K. B.; Kim, L. H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. (2026). Cross-species transcriptomic integration reveals a MIRO1-mediated macrophage-T cell axis in glioma. <i>Life Science Alliance</i> 9(8): e202603749. doi:{' '}
                                 <a
                                     href="https://doi.org/10.26508/lsa.202603749"
                                     target="_blank"
