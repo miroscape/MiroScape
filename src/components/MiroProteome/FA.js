@@ -203,8 +203,12 @@ export default function FA() {
                     If using MiroProteome-FA or the data provided, please cite:
                   </Content>
                   <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
-                    Chandra, S.; Kwak, C.S.; Du, Z.; Barisano, G.; Nguyen, K.T.; Vinogradov, V.; Wang, X.(2025). 
+                    Chandra, S.; Kwak, C.S.; Du, Z.; Barisano, G.; Nguyen, K.T.; Vinogradov, V.; Wang, X.(2026). 
                     Chemical Modulation of MIRO1 Alleviates Cell-Type-Specific Vulnerabilities in Friedreich's Ataxia.
+                    <i> Cell Chem Biol. </i> Published online June 8, 2026. doi: {' '}
+                    <a href="https://www.cell.com/cell-chemical-biology/fulltext/S2451-9456(26)00156-X" target="_blank" rel="noopener noreferrer">
+                    10.1016/j.chembiol.2026.05.004
+                    </a>
                   </Content>
                   {/* <Content style={{ padding: '0 24px', fontSize: '18px', fontFamily: 'Arial' }}>
                     Du, Z.*; Li, M-H.*; Bergsneider, B.H.; Tsai, A.P.; Cho, K; Kim, L.H.; Choi, J.; Li, G.; Wyss-Coray, T.; Lim, M.; Wang, X. 
