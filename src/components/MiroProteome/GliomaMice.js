@@ -190,7 +190,7 @@ export default function GliomaMice() {
               </Content>
               <Content style={{ padding: "0 24px", fontSize: "18px", fontFamily: "Arial" }}>
                 Sainz, A.G.; Kwak, C.S.; Cho, K.B.; Sripadanna, S.A.; Bergsneider, B.H.; Zizzo, Z.;
-                Durairaj, A.S.; Du, Z.; Cooney, I.; Venida, A.; Bharucha, N.; Karikakes, I.; Chiu, W.;
+                Durairaj, A.S.; Du, Z.; Cooney, I.; Venida, A.; Bharucha, N.; Karakikes, I.; Chiu, W.;
                 Lim, M.; Bassik, M.; Wang, X. (2026).
                 The MIRO1-BAX Complex Dictates Life and Death at the
                 Mitochondrial Gate. DOI will be provided once online.
